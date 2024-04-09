@@ -1,10 +1,9 @@
 import { Navigate } from "react-router-dom";
 import useLogin from "./hooks/useAuth";
-import { ReactNode } from "react";
 
 export interface PrivateRouterProps {
   redirectPath: string;
-  children: ReactNode;
+  children: JSX.Element;
 }
 
 export const PrivateRoute = ({

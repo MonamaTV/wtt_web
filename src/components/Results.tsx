@@ -39,7 +39,7 @@ const Results = ({ score }: ResultsProps) => {
   }
 
   if (isError) {
-    return toast.error(error.message);
+    toast.error(error.message);
   }
 
   return (

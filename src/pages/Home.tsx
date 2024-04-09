@@ -11,12 +11,14 @@ const Home = () => {
   const [startTyping, setStartTyping] = useState<boolean>();
   const textRef = useRef<HTMLTextAreaElement>();
   const [defaultTimer, setDefaultTimer] = useState(15);
-  const [timer, setTimer] = useState<number>(defaultTimer);
+  const [timer, setTimer] = useState<number>(15);
+
   const [text, setText] = useState(
     faker.word.words({
       count: 30,
     })
   );
+  
   const resetGame = () => {
     setCurrent("");
     setStartTyping(false);
@@ -28,14 +30,12 @@ const Home = () => {
     if (textRef.current) {
       textRef.current.focus();
     }
-    setTimer(defaultTimer);
+    // setTimer(defaultTimer);
   };
 
   // Counter
   useEffect(() => {
-    // if (timer == 0 && startTyping) {
-    //   // resetGame();
-    // }
+    
     if (timer == 0 || !startTyping) {
       return;
     }
@@ -57,6 +57,9 @@ const Home = () => {
 
   const handleInput = (e: React.FormEvent<HTMLTextAreaElement>) => {
     setStartTyping(true);
+    if (timer === 0) {
+      e.preventDefault();
+    }
     setCurrent(e.currentTarget.value);
   };
 
@@ -70,7 +73,14 @@ const Home = () => {
   const handleRefreshWords = () => {
     resetGame();
     setTimer(defaultTimer);
+    if (textRef.current) {
+      textRef.current.focus({
+        preventScroll: false
+      });
+    }
   };
+
+  console.log(timer)
 
   return (
     <div className="text-white h-screen flex flex-col pt-10 bg-black">
@@ -93,6 +103,7 @@ const Home = () => {
             err = character != text[index] ? err + 1 : err;
             return (
               <span
+                key={index}
                 className={`${
                   character != text[index] ? "text-red-500" : "text-white"
                 }`}

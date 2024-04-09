@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home.tsx";
-import { Profile } from "./pages/Profile.tsx";
-import Leaderboard from "./pages/Leaderboard.tsx";
-import Login from "./pages/Login.tsx";
-import Auth from "./Auth.tsx";
-import Register from "./pages/Register.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Auth from "./Auth";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import App from "./App";
+import { Profile } from "./pages/Profile";
+import Leaderboard from "./pages/Leaderboard";
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([

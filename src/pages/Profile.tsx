@@ -1,9 +1,6 @@
-import { useState } from "react";
 import Modal from "../components/Modal";
-import { SheetTrigger } from "@/components/ui/sheet";
 import NewCompetition from "@/components/NewCompetition";
 export const Profile = () => {
-  const [showModal, setShowModal] = useState(false);
   return (
     <div className="my-4 text-white">
       <div className="border border-gray-900 flex flex-row p-10 my-5">
@@ -60,7 +57,7 @@ export const Profile = () => {
               </select>
             </div>
             <Modal
-              description=" You can create a competition amongst your peers. You need to invite
+              description="You can create a competition amongst your peers. You need to invite
             them using WTC emails."
               heading="Create competition"
             >
