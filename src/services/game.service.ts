@@ -2,7 +2,6 @@ import axios from "@/axios/axios";
 import { Score } from "./types";
 
 export const postScore = async (score: Score) => {
-  console.log("Sending request...");
   const response = await axios.post("/scores", JSON.stringify(score));
 
   if (response.status !== 200) {
@@ -12,6 +11,7 @@ export const postScore = async (score: Score) => {
   return JSON.parse(response.data);
 };
 
-export const getUserScores = async () => {
-  throw "Error";
+export const getUserScores = async () =>  {
+  const response = await axios.get("/scores");
+    return JSON.parse(response.data);
 };

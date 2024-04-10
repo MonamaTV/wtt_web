@@ -80,7 +80,6 @@ const Home = () => {
     }
   };
 
-  console.log(timer)
 
   return (
     <div className="text-white h-screen flex flex-col pt-10 bg-black">
