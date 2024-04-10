@@ -11,7 +11,7 @@ export const postScore = async (score: Score) => {
   return JSON.parse(response.data);
 };
 
-export const getUserScores = async () =>  {
-  const response = await axios.get("/scores");
+export const getUserScores = async (limit: number, orderBy: number) =>  {
+  const response = await axios.get(`/scores?limit=${limit}&sort=${orderBy}`);
     return JSON.parse(response.data);
 };

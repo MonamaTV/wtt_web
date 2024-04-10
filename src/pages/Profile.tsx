@@ -3,7 +3,11 @@ import NewCompetition from "@/components/NewCompetition";
 import { useQuery } from "@tanstack/react-query";
 import { getUser } from "@/services/user.service";
 import { getUserScores } from "@/services/game.service";
+import { useState } from "react";
 export const Profile = () => {
+
+  const [limit, setLimit] = useState(10);
+  const [orderBy, setOrderBy] = useState(1);
 
   const { data } = useQuery({
     queryKey: ["user"],
@@ -13,9 +17,9 @@ export const Profile = () => {
   });
 
   const { data: scores } = useQuery({
-    queryKey: ["scores"],
+    queryKey: ["scores", limit, orderBy],
     queryFn: async () => {
-      return await getUserScores();
+      return await getUserScores(limit, orderBy);
     },
   });
 
@@ -65,21 +69,23 @@ export const Profile = () => {
                 className="border-none bg-gray-900 text-white text-center text-xs px-3 outline-none py-1"
                 name="sort"
                 id="sort"
+                onChange={e => setOrderBy(parseInt(e.target.value))}
               >
                 <option value="0">Sort by</option>
-                <option value="0">Date</option>
-                <option value="0">Accuracy</option>
-                <option value="0">WPM</option>
+                <option value={1}>Date</option>
+                <option value={2}>Accuracy</option>
+                <option value={3}>WPM</option>
               </select>
               <select
                 className="border-none bg-gray-900 text-whitetext-center text-xs px-3 py-1 outline-none"
                 name="sort"
                 id="sort"
+                onChange={e => setLimit(parseInt(e.target.value))}
               >
                 <option value="0">Last games</option>
-                <option value="0">10 games</option>
-                <option value="0">20 games</option>
-                <option value="0">30 games</option>
+                <option value="2">10 games</option>
+                <option value="20">20 games</option>
+                <option value="30">30 games</option>
               </select>
             </div>
             
