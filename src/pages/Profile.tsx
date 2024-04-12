@@ -42,7 +42,7 @@ export const Profile = () => {
                 className="text-white bg-inherit w-full border outline-none border-gray-700 px-3 py-2 text-xs mr-3"
                 type="text"
                 name="first_name"
-                value={data.first_name || ""}
+                defaultValue={data.first_name || ""}
                 id="first_name"
               />
               <input
@@ -51,7 +51,7 @@ export const Profile = () => {
                 type="text"
                 name="last_name"
                 id="last_name"
-                value={data.last_name || ""}
+                defaultValue={data.last_name || ""}
               />
               <button className="text-white bg-yellow-500 w-full border-none outline-none border-gray-700 px-3 py-2 text-xs mr-3">
                 Update changes
@@ -147,8 +147,7 @@ export const Profile = () => {
               </select>
             </div>
             <Modal
-              description="You can create a competition amongst your peers. You need to invite
-            them using WTC emails."
+              description="You can create a competition amongst your peers. You need to invite them using WTC emails."
               heading="Create competition"
             >
               <NewCompetition />

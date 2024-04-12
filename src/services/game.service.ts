@@ -1,5 +1,5 @@
 import axios from "@/axios/axios";
-import { Score } from "./types";
+import { Competition, Score } from "./types";
 
 export const postScore = async (score: Score) => {
   const response = await axios.post("/scores", JSON.stringify(score));
@@ -13,5 +13,11 @@ export const postScore = async (score: Score) => {
 
 export const getUserScores = async (limit: number, orderBy: number) =>  {
   const response = await axios.get(`/scores?limit=${limit}&sort=${orderBy}`);
-    return JSON.parse(response.data);
+  return JSON.parse(response.data);
 };
+
+
+export const createNewCompetition = async (competition: Competition) => {
+  const response = await axios.post("/competitions", JSON.stringify(competition));
+  return JSON.parse(response.data);
+}

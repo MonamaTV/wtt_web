@@ -5,3 +5,9 @@ export interface Score {
   completed: boolean;
   errors: number;
 }
+
+
+export interface Competition {
+  name: string;
+  competitors: string[]
+}
