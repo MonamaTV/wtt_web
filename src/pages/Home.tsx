@@ -18,7 +18,12 @@ const Home = () => {
       count: 30,
     })
   );
-  
+
+  const resetter = () => {
+    resetGame();
+    setTimer(defaultTimer);
+  };
+
   const resetGame = () => {
     setCurrent("");
     setStartTyping(false);
@@ -30,12 +35,11 @@ const Home = () => {
     if (textRef.current) {
       textRef.current.focus();
     }
-    // setTimer(defaultTimer);
+    //
   };
 
   // Counter
   useEffect(() => {
-    
     if (timer == 0 || !startTyping) {
       return;
     }
@@ -75,14 +79,13 @@ const Home = () => {
     setTimer(defaultTimer);
     if (textRef.current) {
       textRef.current.focus({
-        preventScroll: false
+        preventScroll: false,
       });
     }
   };
 
-
   return (
-    <div className="text-white h-screen flex flex-col pt-10 bg-black">
+    <div className="text-white h-screen flex flex-col pt-10 bg-[#09090b]">
       <Counter timer={timer} handleChangeTimer={handleChangeTimer} />
       <div id="test" className="container mx-auto h-[35%] w-5/6 my-5 relative">
         <textarea
@@ -94,7 +97,7 @@ const Home = () => {
           className={` resize-none text-[1.5rem] absolute w-full  border-none outline-none ${
             startTyping
               ? "bg-transparent"
-              : "bg-gradient-to-tr opacity-10 from-gray-950/100 to-gray-950 via-gray-950"
+              : "bg-gradient-to-tr opacity-0 from-gray-950/100 to-gray-950 via-gray-950"
           } z-10 text-transparent`}
         ></textarea>
         <p className="text-[1.5rem] absolute text-gray-800">
@@ -123,7 +126,7 @@ const Home = () => {
           <IoRefreshSharp />
         </button>
       </div>
-      <div onClick={resetGame}>
+      <div onClick={resetter}>
         {timer === 0 && (
           <Modal
             description="Keep typing and climb the Leaderboard!"

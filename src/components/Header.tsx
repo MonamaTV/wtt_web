@@ -4,11 +4,11 @@ import { IoLogOutSharp } from "react-icons/io5";
 const Header = () => {
   const { logout } = useLogin();
   return (
-    <header className="mx-5 bg-gray-950/40 py-4 text-white px-10">
+    <header className=" py-4 text-white px-10 border-b bottom-1 border-gray-900">
       <nav className="flex flex-row justify-between">
         <h3 className="font-bold">
           <Link to={"/"}>
-            WeThink<span className="text-yellow-500">Typing_</span>
+            WeAre<span className="text-yellow-500">Typing_</span>
           </Link>
         </h3>
         <ul className="flex gap-3 text-sm flex-row items-center">

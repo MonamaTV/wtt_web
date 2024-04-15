@@ -45,7 +45,7 @@ const Register = () => {
     <div className="h-[80vh] container flex flex-col justify-center items-center">
       <h3 className="font-bold text-white my-5">
         <Link to={"/"}>
-          WeThink<span className="text-yellow-500">Typing_</span>
+          WeAre<span className="text-yellow-500">Typing_</span>
         </Link>
       </h3>
       <form className="w-1/3">
@@ -54,7 +54,7 @@ const Register = () => {
             Email:
           </label>
           <input
-            placeholder="Enter your email"
+            placeholder="E.g tad023@student.wethinkcode.co.za"
             className="text-white bg-inherit w-full border outline-none px-3 border-gray-700 py-2 text-sm"
             type="text"
             name="email"

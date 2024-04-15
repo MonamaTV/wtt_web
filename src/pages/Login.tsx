@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../components/hooks/useAuth";
 
@@ -7,7 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { login } = useLogin();
 
-  const handleLogin = (e: any) => {
+  const handleLogin = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     login(email, password);
   };
@@ -16,7 +16,7 @@ const Login = () => {
     <div className="h-[80vh] container flex flex-col justify-center items-center">
       <h3 className="font-bold text-white my-5">
         <Link to={"/"}>
-          WeThink<span className="text-yellow-500">Typing_</span>
+          WeAre<span className="text-yellow-500">Typing_</span>
         </Link>
       </h3>
       <form className="w-1/3">
@@ -27,7 +27,7 @@ const Login = () => {
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder="E.g tadima@student.wethinkcode.co.za"
             className="text-white bg-inherit w-full border outline-none px-3 py-2 border-gray-700 text-sm"
             type="text"
             name="email"

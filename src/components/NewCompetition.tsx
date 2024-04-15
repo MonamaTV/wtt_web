@@ -11,51 +11,55 @@ const NewCompetition = () => {
 
   const [competition, setCompetition] = useState({
     name: "",
-    competitors: Array()
+    competitors: Array(),
   });
 
   const handleInvitesInput = () => {
-    setCompetition(prevCompetion => {
-      return {...competition, competitors: [...prevCompetion.competitors, email]}
+    setCompetition((prevCompetion) => {
+      return {
+        ...competition,
+        competitors: [...prevCompetion.competitors, email],
+      };
     });
     setEmail("");
-    setInvites([...invites, ""])
-  }
+    setInvites([...invites, ""]);
+  };
 
   const handlePeerEmailInput = (event: React.FormEvent<HTMLInputElement>) => {
     setEmail(event.currentTarget.value);
-  }
+  };
 
-  const handleCompetitionNameInput = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleCompetitionNameInput = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
     const value = event.currentTarget.value;
-    setCompetition(prevCompetion => {
-      return {...prevCompetion, name: value}
+    setCompetition((prevCompetion) => {
+      return { ...prevCompetion, name: value };
     });
-  }
-
+  };
 
   const mutation = useMutation({
     mutationFn: async (competition: Competition) => {
-      return await createNewCompetition(competition)
+      return await createNewCompetition(competition);
     },
     onSuccess: () => {
-      toast.success("Successfully created a competition.")
-    }
+      toast.success("Successfully created a competition.");
+      setCompetition((_) => {
+        return { name: "", competitors: Array() };
+      });
+      setInvites([""]);
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
   });
 
   const addCompetition = async (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    
+
     mutation.mutate(competition);
-    setCompetition(_ => {
-      return {name: "", competitors: Array()}
-    });
-    setInvites([""])
+  };
 
-  }
-
-
-  
   return (
     <>
       <div className="text-gray-900 bg-white">
@@ -76,8 +80,9 @@ const NewCompetition = () => {
             <label htmlFor="name" className="text-xs">
               Invites*
             </label>
-            {invites.map((_) => (
+            {invites.map((_, index: number) => (
               <input
+                key={index}
                 className="border outline-none text-xs px-3 py-2 mb-2"
                 placeholder="Enter peer's email"
                 type="email"
@@ -94,8 +99,11 @@ const NewCompetition = () => {
             </span>
           </div>
           <div className="flex flex-col gap-y-2 my-2">
-            <button onClick={addCompetition} className="border bg-black text-yellow-500   outline-none text-xs px-3 py-2">
-              { mutation.isPending ? "Creating" : "Create"}
+            <button
+              onClick={addCompetition}
+              className="border bg-black text-yellow-500   outline-none text-xs px-3 py-2"
+            >
+              {mutation.isPending ? "Creating" : "Create"}
             </button>
           </div>
         </form>
