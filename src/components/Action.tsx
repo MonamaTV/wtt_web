@@ -5,8 +5,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-const Action = () => {
+interface ActionProps {
+  mine: boolean;
+  competitionID: string;
+  handleDeleteComp: (competition_id: string) => void;
+  handleRemove: (competition_id: string) => void;
+}
+
+const Action = ( { mine, handleDeleteComp, competitionID } : ActionProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -14,9 +22,13 @@ const Action = () => {
           <BsThreeDotsVertical />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 border-none rounded-none">
-        <DropdownMenuCheckboxItem>See more</DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem>Delete</DropdownMenuCheckboxItem>
+      <DropdownMenuContent className="w-56 border-none rounded-none text-xs bg-yellow-500 text-white">
+        <DropdownMenuCheckboxItem>See competitors</DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem>
+          <Link to={`/?competition=${competitionID}`}>Compete</Link>
+        </DropdownMenuCheckboxItem>
+        
+       { mine && <DropdownMenuCheckboxItem onClick={() => handleDeleteComp(competitionID)}>Delete</DropdownMenuCheckboxItem>}
         <DropdownMenuCheckboxItem className="text-red-500">
           Leave
         </DropdownMenuCheckboxItem>

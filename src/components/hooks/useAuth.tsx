@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { loginUser } from "../../services/auth.service";
+import { jwtDecode } from "jwt-decode";
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -48,6 +49,12 @@ const useLogin = () => {
     return token != null;
   };
 
+  const decodedToken = (): {
+    user_id: string
+  } => {
+    return jwtDecode(getToken()); 
+  }
+
   return {
     isLoggedIn,
     isLoading,
@@ -56,6 +63,7 @@ const useLogin = () => {
     setIsLoggedIn,
     getToken,
     isTokenExist,
+    decodedToken
   };
 };
 

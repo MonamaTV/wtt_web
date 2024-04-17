@@ -8,7 +8,12 @@ import { toast } from "react-toastify";
 import SelectScroll from "@/components/Select";
 import { games, options } from "@/services/types";
 import Action from "@/components/Action";
+import useLogin from "@/components/hooks/useAuth";
 export const Profile = () => {
+
+
+  const { decodedToken } = useLogin();
+
   const [limit, setLimit] = useState(10);
   const [orderBy, setOrderBy] = useState(1);
 
@@ -71,9 +76,19 @@ export const Profile = () => {
     },
   });
 
-  if (data === undefined || scores === undefined) {
+  const handleDeleteCompetition = (competitionID: string) => {
+
+  }
+
+  const handleRemoveUserFromCompetition = (competitionID: string) => {
+    
+  }
+
+  if (data === undefined || scores === undefined || competitions == undefined) {
     return <h1>Loading...</h1>;
   }
+
+  const userID = decodedToken()?.user_id;
 
   return (
     <div className="my-4  text-white">
@@ -194,16 +209,28 @@ export const Profile = () => {
                 </tr>
               </thead>
               <tbody className="w-full text-sm">
-                <tr className="border-b border-cyan-100 border">
-                  <td>1.</td>
-                  <td>Tadima</td>
-                  <td>12 June 2023</td>
-                  <td>17 June 2024</td>
-                  <td>Terrence</td>
-                  <td>
-                    <Action />
-                  </td>
-                </tr>
+                {
+                  competitions.map((competition: any, index: number) => {
+                    return (
+                        <tr key={competition.id} className="border-b border-cyan-100 border">
+                          <td>{++index}.</td>
+                          <td>{competition.user?.first_name || competition.user?.email.split("@")[0]}</td>
+                          <td>{competition.created_at}</td>
+                          <td>{competition.expires_in}</td>
+                          <td>Terrence</td>
+                          <td>
+                            <Action
+                              mine={userID === competition.creator_id}
+                              competitionID={competition.id}
+                              handleDeleteComp={handleDeleteCompetition}
+                              handleRemove={handleRemoveUserFromCompetition}
+                            />
+                          </td>
+                        </tr>
+                      );
+                  })
+                }
+                
               </tbody>
             </table>
           </div>
