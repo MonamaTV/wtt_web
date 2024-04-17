@@ -155,6 +155,7 @@ export const Profile = () => {
                   <th>WPM</th>
                   <th>Accuracy</th>
                   <th>Played at</th>
+                  <th>Mode</th>
                   <th>Completed</th>
                 </tr>
               </thead>
@@ -172,6 +173,7 @@ export const Profile = () => {
                       <td>{score.wpm}</td>
                       <td>{score.accuracy}%</td>
                       <td>{score.played_at}</td>
+                      <td>{score.duration}"</td>
                       <td>{score.completed ? "Yes" : "No"}</td>
                     </tr>
                   );
