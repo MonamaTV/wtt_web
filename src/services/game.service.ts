@@ -34,3 +34,26 @@ export const getCompetitions = async () => {
   }
   return JSON.parse(response.data);
 };
+
+
+export const deleteCompetition = async (competitionID: string) => {
+  const response = await axios.delete(`/competitions/${competitionID}`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+}
+
+
+export const leaveCompetition = async (competitionID: string) => {
+  const response = await axios.delete(`/competitions/${competitionID}`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+}
+
+export const getCompetitors =  (competitionID: string) => {
+
+}
+
