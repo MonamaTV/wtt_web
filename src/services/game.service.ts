@@ -1,8 +1,9 @@
 import axios from "@/axios/axios";
 import { Competition, Score } from "./types";
 
-export const postScore = async (score: Score) => {
-  const response = await axios.post("/scores", JSON.stringify(score));
+export const postScore = async (score: Score, competition: string | null) => {
+  const url = competition ? `/scores/${competition}` : "/scores";
+  const response = await axios.post(url, JSON.stringify(score));
 
   if (response.status !== 200) {
     throw new Error(JSON.parse(response.data).detail);

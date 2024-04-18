@@ -64,10 +64,9 @@ const Home = () => {
     }
 
     const findUser = async () => {
-      let user;
       try {
         if (competitionID) {
-          user = await checkUserInCompetition(competitionID);
+          await checkUserInCompetition(competitionID);
         }
       } catch (error) {
         window.location.href = "/";
@@ -156,6 +155,7 @@ const Home = () => {
             defaultOpen={true}
           >
             <Results
+              competition={competitionID}
               score={{
                 completed: true,
                 duration: defaultTimer,

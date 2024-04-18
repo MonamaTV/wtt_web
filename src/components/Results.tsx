@@ -11,9 +11,10 @@ interface ResultsProps {
     completed: boolean;
     errors: number;
   };
+  competition: string | null
 }
 
-const Results = ({ score }: ResultsProps) => {
+const Results = ({ score, competition }: ResultsProps) => {
   const wpm = score.typed.length / 5 / (score.duration / 60);
   const correct = score.typed.length - score.errors;
   const accuracy = Math.round((correct / score.typed.length) * 100);
@@ -30,7 +31,7 @@ const Results = ({ score }: ResultsProps) => {
         characters: score.typed.length,
         words: score.test.length,
         errors: score.errors,
-      });
+      }, competition);
     },
   });
 
