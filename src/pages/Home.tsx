@@ -6,9 +6,7 @@ import Modal from "@/components/Modal";
 import Results from "@/components/Results";
 import Counter from "@/components/Counter";
 import { useSearchParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { checkUserInCompetition } from "@/services/user.service";
-import { toast } from "react-toastify";
 
 const Home = () => {
   const [searchParams, _] = useSearchParams();
