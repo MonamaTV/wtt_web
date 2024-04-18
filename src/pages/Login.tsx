@@ -13,13 +13,13 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[80vh] container flex flex-col justify-center items-center">
+    <div className="h-[80vh] sm:container flex flex-col justify-center items-center">
       <h3 className="font-bold text-white my-5">
         <Link to={"/"}>
           WeAre<span className="text-yellow-500">Typing_</span>
         </Link>
       </h3>
-      <form className="w-1/3">
+      <form className="w-full sm:w-1/3">
         <div className="w-full my-5">
           <label className="text-white text-sm my-1 block" htmlFor="email">
             Email:
