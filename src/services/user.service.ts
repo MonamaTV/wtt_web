@@ -20,7 +20,10 @@ export const updateUser = async (name: string, surname: string) => {
   return JSON.parse(response.data);
 };
 
-// export const getUserScores = async () => {
-//     const response = await axios.get("/scores");
-//     return JSON.parse(response.data);
-// }
+export const checkUserInCompetition = async (competitionID: string | null) => {
+    const response = await axios.get(`/competitions/check/${competitionID}`);
+    if (response.status !== 200) {
+      throw new Error(JSON.parse(response.data).detail);
+    }
+    return JSON.parse(response.data);
+}

@@ -14,7 +14,7 @@ interface ActionProps {
   handleRemove: (competition_id: string) => void;
 }
 
-const Action = ( { mine, handleDeleteComp, competitionID } : ActionProps) => {
+const Action = ( { mine, handleDeleteComp, competitionID, handleRemove } : ActionProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -28,10 +28,12 @@ const Action = ( { mine, handleDeleteComp, competitionID } : ActionProps) => {
           <Link to={`/?competition=${competitionID}`}>Compete</Link>
         </DropdownMenuCheckboxItem>
         
-       { mine && <DropdownMenuCheckboxItem onClick={() => handleDeleteComp(competitionID)}>Delete</DropdownMenuCheckboxItem>}
-        <DropdownMenuCheckboxItem className="text-red-500">
-          Leave
-        </DropdownMenuCheckboxItem>
+       { mine && <DropdownMenuCheckboxItem className="text-red-500" onClick={() => handleDeleteComp(competitionID)}>Delete</DropdownMenuCheckboxItem>}
+       {  !mine && 
+            <DropdownMenuCheckboxItem  onClick={() => handleRemove(competitionID)} className="text-red-500">
+              Leave
+            </DropdownMenuCheckboxItem> 
+          }
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -2,7 +2,7 @@ import Modal from "../components/Modal";
 import NewCompetition from "@/components/NewCompetition";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getUser, updateUser } from "@/services/user.service";
-import { getCompetitions, getUserScores } from "@/services/game.service";
+import { deleteCompetition, getCompetitions, getUserScores, leaveCompetition } from "@/services/game.service";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import SelectScroll from "@/components/Select";
@@ -76,12 +76,30 @@ export const Profile = () => {
     },
   });
 
-  const handleDeleteCompetition = (competitionID: string) => {
+  const competitionMutation = useMutation({
+    mutationFn: async (competitionID: string) => {
+        return await deleteCompetition(competitionID)
+    },
+    onSuccess: () => {
+      toast.success("Successfully deleted competition.")
+    }
+  });
 
+  const leaveMutation = useMutation({
+    mutationFn: async (competitionID: string) => {
+        return await leaveCompetition(competitionID)
+    },
+    onSuccess: () => {
+      toast.success("Successfully left competition.")
+    }
+  })
+
+  const handleDeleteCompetition = (competitionID: string) => {
+    competitionMutation.mutate(competitionID);
   }
 
   const handleRemoveUserFromCompetition = (competitionID: string) => {
-    
+    leaveMutation.mutate(competitionID)
   }
 
   if (data === undefined || scores === undefined || competitions == undefined) {

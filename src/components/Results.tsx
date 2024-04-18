@@ -21,7 +21,7 @@ const Results = ({ score }: ResultsProps) => {
     (score.typed.length / 5 - score.errors) / (score.duration / 60)
   );
 
-  const { isError, isSuccess, error } = useQuery({
+  const { isError, error } = useQuery({
     queryKey: ["scores", score],
     queryFn: async () => {
       return await postScore({
@@ -34,9 +34,6 @@ const Results = ({ score }: ResultsProps) => {
     },
   });
 
-  if (isSuccess) {
-    console.log("Count me in...");
-  }
 
   if (isError) {
     toast.error(error.message);

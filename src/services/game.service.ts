@@ -38,6 +38,7 @@ export const getCompetitions = async () => {
 
 export const deleteCompetition = async (competitionID: string) => {
   const response = await axios.delete(`/competitions/${competitionID}`);
+  console.log(response)
   if (response.status !== 200) {
     throw new Error(JSON.parse(response.data).detail);
   }
@@ -46,14 +47,14 @@ export const deleteCompetition = async (competitionID: string) => {
 
 
 export const leaveCompetition = async (competitionID: string) => {
-  const response = await axios.delete(`/competitions/${competitionID}`);
+  const response = await axios.delete(`/competitions/remove/${competitionID}`);
   if (response.status !== 200) {
     throw new Error(JSON.parse(response.data).detail);
   }
   return JSON.parse(response.data);
 }
 
-export const getCompetitors =  (competitionID: string) => {
+// export const getCompetitors =  (competitionID: string) => {
 
-}
+// }
 

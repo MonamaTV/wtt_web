@@ -5,14 +5,22 @@ import { faker } from "@faker-js/faker";
 import Modal from "@/components/Modal";
 import Results from "@/components/Results";
 import Counter from "@/components/Counter";
+import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { checkUserInCompetition } from "@/services/user.service";
+import { toast } from "react-toastify";
 
 const Home = () => {
+  const [searchParams, _] = useSearchParams();
   const [current, setCurrent] = useState<string>("");
   const [startTyping, setStartTyping] = useState<boolean>();
   const textRef = useRef<HTMLTextAreaElement>();
   const [defaultTimer, setDefaultTimer] = useState(15);
   const [timer, setTimer] = useState<number>(15);
 
+  const competitionID = searchParams.get("competition");
+
+  
   const [text, setText] = useState(
     faker.word.words({
       count: 30,
@@ -54,8 +62,20 @@ const Home = () => {
     if (textRef.current) {
       textRef.current.focus();
     }
-  }, []);
 
+    const findUser = async () => {
+      let user;
+      try {
+        if (competitionID) {
+          user = await checkUserInCompetition(competitionID);
+        }
+      } catch (error) {
+        window.location.href = "/";
+      }
+    }
+
+    findUser();
+  }, []);
   // Errors commited during the game...
   let err = 0;
 
@@ -83,6 +103,8 @@ const Home = () => {
       });
     }
   };
+  // Desperate
+  
 
   return (
     <div className="text-white h-screen flex flex-col pt-10 bg-[#09090b]">
