@@ -72,13 +72,15 @@ import {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((value: any) => (
-            <TableRow key={value}>
-                {
-                    Object.values(value).map((val: any) => (
-                        <TableCell className="font-medium">{val}</TableCell>
-                    ))
-                }
+          {data.map((score: any, index) => (
+            <TableRow key={score.id}>
+                <TableCell className="font-medium">{++index}</TableCell>
+                <TableCell className="font-medium">{score?.user.email}</TableCell>
+                <TableCell className="font-medium">{score.wpm}</TableCell>
+                <TableCell className="font-medium">{score.accuracy}%</TableCell>
+                <TableCell className="font-medium">{score.played_at}</TableCell>
+                <TableCell className="font-medium">{score.duration}</TableCell>
+                <TableCell className="font-medium">{score.completed ? "Yes" : "No"}</TableCell>
             </TableRow>
           ))}
         </TableBody>
