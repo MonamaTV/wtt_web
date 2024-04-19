@@ -5,13 +5,13 @@ const Header = () => {
   const { logout } = useLogin();
   return (
     <header className=" py-4 text-white px-10 border-b bottom-1 border-gray-900">
-      <nav className="flex flex-row justify-between">
+      <nav className="flex flex-row justify-between items-center">
         <h3 className="font-bold">
-          <Link to={"/"}>
+          <Link to={"/"} className="text-xs sm:text-base">
             WeAre<span className="text-yellow-500">Typing_</span>
           </Link>
         </h3>
-        <ul className="flex gap-3 text-sm flex-row items-center">
+        <ul className="flex gap-3 text-xs flex-row items-center">
           <li>
             <Link to={"/"}>Home</Link>
           </li>
@@ -21,7 +21,7 @@ const Header = () => {
           <li>
             <Link to={"/leaderboard"}>Leaderboard</Link>
           </li>
-          <li>
+          <li className="hidden sm:list-item">
             <button
               onClick={logout}
               className="flex items-center justify-center gap-2 border px-1 text-xs py-1"

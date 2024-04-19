@@ -8,9 +8,11 @@ import Counter from "@/components/Counter";
 import { useSearchParams } from "react-router-dom";
 import { checkUserInCompetition } from "@/services/user.service";
 import { toast } from "react-toastify";
+import useMobile from "@/components/hooks/useMobile";
 
 const Home = () => {
   const [searchParams, _] = useSearchParams();
+  const isMobileView = useMobile();
   const [current, setCurrent] = useState<string>("");
   const [startTyping, setStartTyping] = useState<boolean>();
   const textRef = useRef<HTMLTextAreaElement>();
@@ -107,7 +109,7 @@ const Home = () => {
   // Desperate
   
 
-  return (
+  return !isMobileView ? (
     <div className="text-white h-screen flex flex-col pt-10 bg-[#09090b]">
       <Counter timer={timer} handleChangeTimer={handleChangeTimer} />
       <div id="test" className="container mx-auto h-[35%] w-5/6 my-5 relative">
@@ -169,6 +171,10 @@ const Home = () => {
           </Modal>
         )}
       </div>
+    </div>
+  ): (
+    <div className="text-white h-screen flex flex-row items-center justify-center pt-10 bg-[#09090b]">
+      <small>Use desktop for better experience!</small>
     </div>
   );
 };
