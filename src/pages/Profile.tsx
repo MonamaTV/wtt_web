@@ -9,6 +9,7 @@ import SelectScroll from "@/components/Select";
 import { games, options } from "@/services/types";
 import Action from "@/components/Action";
 import useLogin from "@/components/hooks/useAuth";
+import { TableUI } from "@/components/Table";
 export const Profile = () => {
 
 
@@ -108,6 +109,27 @@ export const Profile = () => {
 
   const userID = decodedToken()?.user_id;
 
+  const scoreHeaders = [
+    "#",
+    "Creator",
+    "WPM",
+    "Accuracy",
+    "Played at",
+    "Mode",
+    "Completed"
+  ]
+
+  const competitionHeaders = [
+    "#",
+    "Creator",
+    "WPM",
+    "Accuracy",
+    "Played at",
+    "Mode",
+    "Completed"
+  ]
+
+
   return (
     <div className="my-4  text-white">
       <div className="border-b border-gray-900 flex flex-row p-10 my-5">
@@ -165,7 +187,8 @@ export const Profile = () => {
             </div>
           </div>
           <div className="w-full">
-            <table className="my-2 w-full  border-separate border-spacing-y-3 border-spacing-x-0">
+            <TableUI headers={scoreHeaders} data={scores} />
+            {/* <table className="my-2 w-full  border-separate border-spacing-y-3 border-spacing-x-0">
               <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-800 dark:text-gray-100 ">
                 <tr className="border font-normal">
                   <th>#</th>
@@ -197,7 +220,7 @@ export const Profile = () => {
                   );
                 })}
               </tbody>
-            </table>
+            </table> */}
           </div>
         </div>
       </div>
