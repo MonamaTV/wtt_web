@@ -16,8 +16,6 @@ import useLogin from "@/components/hooks/useAuth";
 import { TableUI } from "@/components/Table";
 import { CompetitionsTableUI } from "@/components/Competitions";
 export const Profile = () => {
-  const { decodedToken } = useLogin();
-
   const [limit, setLimit] = useState(10);
   const [orderBy, setOrderBy] = useState(1);
 
