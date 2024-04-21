@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import useLogin from "./hooks/useAuth";
 import { timeFormat } from "@/lib/time";
 
 interface TableProps {
@@ -15,12 +14,10 @@ interface TableProps {
   data: [];
 }
 
-export function TableUI({ headers, data }: TableProps) {
-  const { decodedToken } = useLogin();
-
+export function LeaderboardUI({ headers, data }: TableProps) {
   return (
     <Table>
-      <TableCaption>A list of your recent scores.</TableCaption>
+      <TableCaption>Current leaders...</TableCaption>
       <TableHeader>
         <TableRow className="border-none hover:bg-inherit">
           {headers.map((val, index) => (
@@ -31,25 +28,21 @@ export function TableUI({ headers, data }: TableProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((score: any, index) => (
+        {data.map((info: any, index) => (
           <TableRow
             className="border-none dark:text-slate-200 text-slate-700 hover:bg-slate-800/10"
-            key={score.id}
+            key={info.user.id}
           >
             <TableCell className="font-medium">{++index}</TableCell>
             <TableCell className="font-medium">
-              {score?.user.id === decodedToken().user_id
-                ? "Me"
-                : score?.user.email}
+              {info.user.first_name || info.user.email.split("@")[0]}
             </TableCell>
-            <TableCell className="font-medium">{score.wpm}</TableCell>
-            <TableCell className="font-medium">{score.accuracy}%</TableCell>
+            <TableCell className="font-medium">{info.wpm}</TableCell>
             <TableCell className="font-medium">
-              {timeFormat(score.played_at)}
+              {Math.round(info.accuracy)}%
             </TableCell>
-            <TableCell className="font-medium">{score.duration}</TableCell>
             <TableCell className="font-medium">
-              {score.completed ? "Yes" : "No"}
+              {timeFormat(info.score.played_at)}
             </TableCell>
           </TableRow>
         ))}

@@ -11,6 +11,7 @@ import { Profile } from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
 import Home from "./pages/Home";
 import Competition from "./pages/Competition";
+import { ThemeProvider } from "./components/theme-provider";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -58,6 +59,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );

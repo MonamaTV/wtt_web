@@ -6,9 +6,9 @@ import { PrivateRoute } from "./components/ProtectedRoute";
 function App() {
   return (
     <PrivateRoute redirectPath="/auth/login">
-      <div className="bg-[#09090b] py-5">
+      <div className="dark:bg-[#09090b]">
         <Header />
-        <div className="sm:container mx-auto text-white">
+        <div className="sm:container mx-auto dark:text-white">
           <Outlet />
         </div>
         <ToastContainer />

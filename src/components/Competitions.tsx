@@ -43,7 +43,7 @@ export function CompetitionsTableUI({
       <TableBody>
         {data.map((competition: any, index) => (
           <TableRow
-            className="border-none hover:bg-slate-800/10"
+            className="border-none dark:text-slate-200 text-slate-700 hover:bg-slate-800/10"
             key={competition.id}
           >
             <TableCell className="font-medium">{++index}</TableCell>

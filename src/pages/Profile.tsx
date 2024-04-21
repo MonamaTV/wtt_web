@@ -130,7 +130,7 @@ export const Profile = () => {
   ];
 
   return (
-    <div className="my-4  text-white">
+    <div className="my-4 dark:text-white">
       <div className="border-b border-gray-900 flex flex-row p-10 my-5">
         <div className="flex flex-col gap-y-3 w-full sm:w-2/3">
           <h3 className="text-sm">Profile</h3>
@@ -139,7 +139,7 @@ export const Profile = () => {
             <div className="flex flex-col sm:flex-row">
               <input
                 placeholder={data.first_name || "Enter your name"}
-                className="my-1 text-white bg-inherit w-full border outline-none border-gray-700 px-3 py-2 text-xs sm:mr-3"
+                className="my-1 text-slate-800 dark:text-white bg-inherit w-full border outline-none dark:border-gray-700 px-3 py-2 text-xs sm:mr-3"
                 type="text"
                 name="name"
                 value={user.name || data.first_name}
@@ -148,7 +148,7 @@ export const Profile = () => {
               />
               <input
                 placeholder={data.last_name || "Enter your last name"}
-                className="my-1 text-white bg-inherit w-full border outline-none border-gray-700 px-3 py-2 text-xs sm:mr-3"
+                className="my-1 text-slate-800 dark:text-white bg-inherit w-full border outline-none dark:border-gray-700 px-3 py-2 text-xs sm:mr-3"
                 type="text"
                 name="surname"
                 id="surname"
@@ -158,7 +158,7 @@ export const Profile = () => {
               <button
                 onClick={updateUserDetails}
                 disabled={mutation.isPending}
-                className="text-white my-1 bg-yellow-500 w-full sm:w-2/3 border-none outline-none border-gray-700 px-3 py-2 text-xs mr-3 disabled:bg-gray-200 disabled:cursor-not-allowed"
+                className="text-slate-800 dark:text-white my-1 bg-yellow-500 w-full sm:w-2/3 border-none outline-none border-gray-700 px-3 py-2 text-xs mr-3 disabled:bg-gray-200 disabled:cursor-not-allowed"
               >
                 {mutation.isPending
                   ? " Updating changes..."

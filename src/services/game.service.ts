@@ -36,16 +36,14 @@ export const getCompetitions = async () => {
   return JSON.parse(response.data);
 };
 
-
 export const deleteCompetition = async (competitionID: string) => {
   const response = await axios.delete(`/competitions/${competitionID}`);
-  console.log(response)
+  console.log(response);
   if (response.status !== 200) {
     throw new Error(JSON.parse(response.data).detail);
   }
   return JSON.parse(response.data);
-}
-
+};
 
 export const leaveCompetition = async (competitionID: string) => {
   const response = await axios.delete(`/competitions/remove/${competitionID}`);
@@ -53,9 +51,16 @@ export const leaveCompetition = async (competitionID: string) => {
     throw new Error(JSON.parse(response.data).detail);
   }
   return JSON.parse(response.data);
-}
+};
+
+export const getLeaderboard = async () => {
+  const response = await axios.get("/scores/leaderboard");
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+};
 
 // export const getCompetitors =  (competitionID: string) => {
 
 // }
-

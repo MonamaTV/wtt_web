@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import useLogin from "./hooks/useAuth";
 import { IoLogOutSharp } from "react-icons/io5";
+import { ModeToggle } from "./mode-toggle";
 const Header = () => {
   const { logout } = useLogin();
   return (
-    <header className=" py-4 text-white px-10 border-b bottom-1 border-gray-900">
+    <header className="p-4 dark:text-white shadow-sm dark:shadow-none px-10 dark:border-b bottom-1 border-gray-900">
       <nav className="flex flex-row justify-between items-center">
         <h3 className="font-bold">
-          <Link to={"/"} className="text-xs sm:text-base">
+          <Link
+            to={"/"}
+            className="text-xs sm:text-base dark:text-white text-black"
+          >
             WeAre<span className="text-yellow-500">Typing_</span>
           </Link>
         </h3>
@@ -29,6 +33,9 @@ const Header = () => {
               Sign out
               <IoLogOutSharp />
             </button>
+          </li>
+          <li>
+            <ModeToggle />
           </li>
         </ul>
       </nav>

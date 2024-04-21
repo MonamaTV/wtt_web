@@ -108,7 +108,7 @@ const Home = () => {
   // Desperate
 
   return !isMobileView ? (
-    <div className="text-white h-screen flex flex-col pt-10 bg-[#09090b]">
+    <div className="text-white h-screen flex flex-col pt-10 dark:bg-[#09090b]">
       <Counter timer={timer} handleChangeTimer={handleChangeTimer} />
       <div id="test" className="container mx-auto h-[35%] w-5/6 my-5 relative">
         <textarea
@@ -123,14 +123,16 @@ const Home = () => {
               : "bg-gradient-to-tr opacity-0 from-gray-950/100 to-gray-950 via-gray-950"
           } z-10 text-transparent`}
         ></textarea>
-        <p className="text-[1.5rem] absolute text-gray-800">
+        <p className="text-[1.5rem] absolute text-gray-300 dark:text-gray-800">
           {[...current].map((character, index) => {
             err = character != text[index] ? err + 1 : err;
             return (
               <span
                 key={index}
                 className={`${
-                  character != text[index] ? "text-red-500" : "text-white"
+                  character != text[index]
+                    ? "text-red-500"
+                    : "text-black dark:text-white"
                 }`}
               >
                 {text[index]}
