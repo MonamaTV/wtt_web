@@ -1,7 +1,9 @@
 import { Axios } from "axios";
 
+console.log(import.meta.env.VITE_API);
+
 const axios = new Axios({
-  baseURL: process.env.API,
+  baseURL: import.meta.env.VITE_API,
 });
 
 axios.interceptors.request.use(
