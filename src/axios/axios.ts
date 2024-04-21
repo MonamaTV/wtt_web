@@ -15,7 +15,7 @@ axios.interceptors.request.use(
     if (config.headers["Content-Type"] == null) {
       config.headers.setContentType("application/json");
     }
-    config.headers.set("Access-Control-Allow-Origin", "*");
+    // config.headers.set("Access-Control-Allow-Origin", "*");
 
     return config;
   },
