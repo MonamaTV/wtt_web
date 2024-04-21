@@ -2,17 +2,20 @@ import Modal from "../components/Modal";
 import NewCompetition from "@/components/NewCompetition";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getUser, updateUser } from "@/services/user.service";
-import { deleteCompetition, getCompetitions, getUserScores, leaveCompetition } from "@/services/game.service";
+import {
+  deleteCompetition,
+  getCompetitions,
+  getUserScores,
+  leaveCompetition,
+} from "@/services/game.service";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import SelectScroll from "@/components/Select";
 import { games, options } from "@/services/types";
-import Action from "@/components/Action";
 import useLogin from "@/components/hooks/useAuth";
 import { TableUI } from "@/components/Table";
+import { CompetitionsTableUI } from "@/components/Competitions";
 export const Profile = () => {
-
-
   const { decodedToken } = useLogin();
 
   const [limit, setLimit] = useState(10);
@@ -79,35 +82,33 @@ export const Profile = () => {
 
   const competitionMutation = useMutation({
     mutationFn: async (competitionID: string) => {
-        return await deleteCompetition(competitionID)
+      return await deleteCompetition(competitionID);
     },
     onSuccess: () => {
-      toast.success("Successfully deleted competition.")
-    }
+      toast.success("Successfully deleted competition.");
+    },
   });
 
   const leaveMutation = useMutation({
     mutationFn: async (competitionID: string) => {
-        return await leaveCompetition(competitionID)
+      return await leaveCompetition(competitionID);
     },
     onSuccess: () => {
-      toast.success("Successfully left competition.")
-    }
-  })
+      toast.success("Successfully left competition.");
+    },
+  });
 
   const handleDeleteCompetition = (competitionID: string) => {
     competitionMutation.mutate(competitionID);
-  }
+  };
 
   const handleRemoveUserFromCompetition = (competitionID: string) => {
-    leaveMutation.mutate(competitionID)
-  }
+    leaveMutation.mutate(competitionID);
+  };
 
   if (data === undefined || scores === undefined || competitions == undefined) {
     return <h1>Loading...</h1>;
   }
-
-  const userID = decodedToken()?.user_id;
 
   const scoreHeaders = [
     "#",
@@ -116,31 +117,29 @@ export const Profile = () => {
     "Accuracy",
     "Played at",
     "Mode",
-    "Completed"
-  ]
+    "Completed",
+  ];
 
   const competitionHeaders = [
     "#",
     "Creator",
-    "WPM",
-    "Accuracy",
-    "Played at",
-    "Mode",
-    "Completed"
-  ]
-
+    "Created at",
+    "Expires in",
+    "Winner",
+    "",
+  ];
 
   return (
     <div className="my-4  text-white">
       <div className="border-b border-gray-900 flex flex-row p-10 my-5">
-        <div className="flex flex-col gap-y-3 w-2/3">
+        <div className="flex flex-col gap-y-3 w-full sm:w-2/3">
           <h3 className="text-sm">Profile</h3>
           <small>Logged in as {data.email.split("@")[0]}</small>
           <form className="w-full">
-            <div className="flex flex-row">
+            <div className="flex flex-col sm:flex-row">
               <input
                 placeholder={data.first_name || "Enter your name"}
-                className="text-white bg-inherit w-full border outline-none border-gray-700 px-3 py-2 text-xs mr-3"
+                className="my-1 text-white bg-inherit w-full border outline-none border-gray-700 px-3 py-2 text-xs sm:mr-3"
                 type="text"
                 name="name"
                 value={user.name || data.first_name}
@@ -149,7 +148,7 @@ export const Profile = () => {
               />
               <input
                 placeholder={data.last_name || "Enter your last name"}
-                className="text-white bg-inherit w-full border outline-none border-gray-700 px-3 py-2 text-xs mr-3"
+                className="my-1 text-white bg-inherit w-full border outline-none border-gray-700 px-3 py-2 text-xs sm:mr-3"
                 type="text"
                 name="surname"
                 id="surname"
@@ -159,7 +158,7 @@ export const Profile = () => {
               <button
                 onClick={updateUserDetails}
                 disabled={mutation.isPending}
-                className="text-white bg-yellow-500 w-2/3 border-none outline-none border-gray-700 px-3 py-2 text-xs mr-3 disabled:bg-gray-200 disabled:cursor-not-allowed"
+                className="text-white my-1 bg-yellow-500 w-full sm:w-2/3 border-none outline-none border-gray-700 px-3 py-2 text-xs mr-3 disabled:bg-gray-200 disabled:cursor-not-allowed"
               >
                 {mutation.isPending
                   ? " Updating changes..."
@@ -188,39 +187,6 @@ export const Profile = () => {
           </div>
           <div className="w-full">
             <TableUI headers={scoreHeaders} data={scores} />
-            {/* <table className="my-2 w-full  border-separate border-spacing-y-3 border-spacing-x-0">
-              <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-800 dark:text-gray-100 ">
-                <tr className="border font-normal">
-                  <th>#</th>
-                  <th>Creator</th>
-                  <th>WPM</th>
-                  <th>Accuracy</th>
-                  <th>Played at</th>
-                  <th>Mode</th>
-                  <th>Completed</th>
-                </tr>
-              </thead>
-              <tbody className="w-full text-sm">
-                {scores.map((score: any, index: number) => {
-                  return (
-                    <tr
-                      key={score.id}
-                      className="border-b border-cyan-100 border"
-                    >
-                      <td>{++index}.</td>
-                      <td>
-                        {score.user.id === data.id ? "Me" : score.user.email}
-                      </td>
-                      <td>{score.wpm}</td>
-                      <td>{score.accuracy}%</td>
-                      <td>{score.played_at}</td>
-                      <td>{score.duration}"</td>
-                      <td>{score.completed ? "Yes" : "No"}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table> */}
           </div>
         </div>
       </div>
@@ -240,7 +206,13 @@ export const Profile = () => {
             </Modal>
           </div>
           <div className="w-full">
-            <table className="my-2 w-full  border-separate border-spacing-y-3 border-spacing-x-0">
+            <CompetitionsTableUI
+              handleDeleteCompetition={handleDeleteCompetition}
+              handleRemoveUserFromCompetition={handleRemoveUserFromCompetition}
+              data={competitions}
+              headers={competitionHeaders}
+            />
+            {/* <table className="my-2 w-full  border-separate border-spacing-y-3 border-spacing-x-0">
               <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-800 dark:text-gray-100 ">
                 <tr className="border font-normal">
                   <th>#</th>
@@ -275,7 +247,7 @@ export const Profile = () => {
                 }
                 
               </tbody>
-            </table>
+            </table> */}
           </div>
         </div>
       </div>

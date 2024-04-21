@@ -14,7 +14,12 @@ interface ActionProps {
   handleRemove: (competition_id: string) => void;
 }
 
-const Action = ( { mine, handleDeleteComp, competitionID, handleRemove } : ActionProps) => {
+const Action = ({
+  mine,
+  handleDeleteComp,
+  competitionID,
+  handleRemove,
+}: ActionProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -23,17 +28,27 @@ const Action = ( { mine, handleDeleteComp, competitionID, handleRemove } : Actio
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 border-none rounded-none text-xs bg-yellow-500 text-white">
-        <DropdownMenuCheckboxItem>See competitors</DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem>See details</DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem>
           <Link to={`/?competition=${competitionID}`}>Compete</Link>
         </DropdownMenuCheckboxItem>
-        
-       { mine && <DropdownMenuCheckboxItem className="text-red-500" onClick={() => handleDeleteComp(competitionID)}>Delete</DropdownMenuCheckboxItem>}
-       {  !mine && 
-            <DropdownMenuCheckboxItem  onClick={() => handleRemove(competitionID)} className="text-red-500">
-              Leave
-            </DropdownMenuCheckboxItem> 
-          }
+
+        {mine && (
+          <DropdownMenuCheckboxItem
+            className="text-red-500"
+            onClick={() => handleDeleteComp(competitionID)}
+          >
+            Delete
+          </DropdownMenuCheckboxItem>
+        )}
+        {!mine && (
+          <DropdownMenuCheckboxItem
+            onClick={() => handleRemove(competitionID)}
+            className="text-red-500"
+          >
+            Leave
+          </DropdownMenuCheckboxItem>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );

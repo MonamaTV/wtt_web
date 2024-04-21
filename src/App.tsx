@@ -8,7 +8,7 @@ function App() {
     <PrivateRoute redirectPath="/auth/login">
       <div className="bg-[#09090b] py-5">
         <Header />
-        <div className="container mx-auto tetx-white">
+        <div className="sm:container mx-auto text-white">
           <Outlet />
         </div>
         <ToastContainer />

@@ -10,6 +10,7 @@ import App from "./App";
 import { Profile } from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
 import Home from "./pages/Home";
+import Competition from "./pages/Competition";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/leaderboard",
         element: <Leaderboard />,
+      },
+      {
+        path: "/competition/:id",
+        element: <Competition />,
       },
     ],
   },

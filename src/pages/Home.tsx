@@ -21,7 +21,6 @@ const Home = () => {
 
   const competitionID = searchParams.get("competition");
 
-  
   const [text, setText] = useState(
     faker.word.words({
       count: 30,
@@ -69,13 +68,13 @@ const Home = () => {
         if (competitionID) {
           await checkUserInCompetition(competitionID);
         }
-      } catch (error) {
-        toast.error("Error entering the competition.")
+      } catch (error: Error | any) {
+        toast.error(error.message || "Error entering the competition.");
         setTimeout(() => {
-          window.location.href = "/"
-        }, 2000)
+          window.location.href = "/";
+        }, 2000);
       }
-    }
+    };
 
     findUser();
   }, []);
@@ -107,7 +106,6 @@ const Home = () => {
     }
   };
   // Desperate
-  
 
   return !isMobileView ? (
     <div className="text-white h-screen flex flex-col pt-10 bg-[#09090b]">
@@ -172,7 +170,7 @@ const Home = () => {
         )}
       </div>
     </div>
-  ): (
+  ) : (
     <div className="text-white h-screen flex flex-row items-center justify-center pt-10 bg-[#09090b]">
       <small>Use desktop for better experience!</small>
     </div>
