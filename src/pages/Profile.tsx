@@ -12,7 +12,6 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import SelectScroll from "@/components/Select";
 import { games, options } from "@/services/types";
-import useLogin from "@/components/hooks/useAuth";
 import { TableUI } from "@/components/Table";
 import { CompetitionsTableUI } from "@/components/Competitions";
 export const Profile = () => {
