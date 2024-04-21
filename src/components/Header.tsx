@@ -5,9 +5,9 @@ import { ModeToggle } from "./mode-toggle";
 const Header = () => {
   const { logout } = useLogin();
   return (
-    <header className="p-4 dark:text-white shadow-sm dark:shadow-none px-10 dark:border-b bottom-1 border-gray-900">
+    <header className="p-4 dark:text-white shadow-sm dark:shadow-none sm:px-10 dark:border-b bottom-1 border-gray-900">
       <nav className="flex flex-row justify-between items-center">
-        <h3 className="font-bold">
+        <h3 className="font-bold text-xs sm:text-base">
           <Link
             to={"/"}
             className="text-xs sm:text-base dark:text-white text-black"

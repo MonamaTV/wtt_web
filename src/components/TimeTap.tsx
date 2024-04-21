@@ -7,8 +7,8 @@ interface TimeTapProps {
 const TimeTap = ({ handleChangeTimer }: TimeTapProps) => {
   return (
     <div className="flex flex-row justify-center items-center my-3">
-      <Tabs defaultValue="15" className="">
-        <TabsList className="rounded-none bg-inherit ">
+      <Tabs defaultValue="15" className="dark:bg-[#09090b]">
+        <TabsList className="rounded-none dark:bg-[#121214]">
           <TabsTrigger
             onClick={() => handleChangeTimer(15)}
             className="rounded-none text-xs"

@@ -18,10 +18,10 @@ interface SelectProps {
 const SelectScroll = ({ options, handleOnChange, header }: SelectProps) => {
   return (
     <Select onValueChange={handleOnChange}>
-      <SelectTrigger className="w-[130px] border dark:border-gray-900 bg-inherit rounded-none ">
+      <SelectTrigger className="w-[130px] border dark:bg-[#09090b] dark:border-gray-900 bg-inherit rounded-none ">
         <SelectValue placeholder={header} />
       </SelectTrigger>
-      <SelectContent className=" rounded-none outline-none">
+      <SelectContent className="dark:bg-[#09090b] rounded-none outline-none">
         {options.map(({ name, value }, index) => {
           return (
             <SelectItem className="rounded-none" key={index} value={value}>

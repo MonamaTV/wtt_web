@@ -146,7 +146,7 @@ const Home = () => {
       <div className="relative container mx-auto flex items-center justify-center">
         <button
           onClick={handleRefreshWords}
-          className="text-yellow-500 bg-gray-300/10 text-sm px-4 py-1"
+          className="text-yellow-500 border dark:border-none bg-gray-300/10 text-sm px-4 py-1"
         >
           <IoRefreshSharp />
         </button>
@@ -173,7 +173,7 @@ const Home = () => {
       </div>
     </div>
   ) : (
-    <div className="text-white h-screen flex flex-row items-center justify-center pt-10 bg-[#09090b]">
+    <div className="dark:text-white h-screen flex flex-row items-center justify-center pt-10 dark:bg-[#09090b]">
       <small>Use desktop for better experience!</small>
     </div>
   );

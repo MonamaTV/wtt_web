@@ -43,19 +43,19 @@ const Register = () => {
 
   return (
     <div className="h-[80vh] sm:container flex flex-col justify-center items-center">
-      <h3 className="font-bold text-white my-5">
+      <h3 className="font-bold dark:text-white my-5">
         <Link to={"/"}>
           WeAre<span className="text-yellow-500">Typing_</span>
         </Link>
       </h3>
       <form className="w-full sm:w-1/3">
         <div className="w-full my-5">
-          <label className="text-white text-sm my-1 block" htmlFor="email">
+          <label className="dark:text-white text-sm my-1 block" htmlFor="email">
             Email:
           </label>
           <input
             placeholder="E.g tad023@student.wethinkcode.co.za"
-            className="text-white bg-inherit w-full border outline-none px-3 border-gray-700 py-2 text-sm"
+            className="dark:text-white bg-inherit w-full border outline-none px-3 border-gray-700 py-2 text-sm"
             type="text"
             name="email"
             onChange={handleUserInput}
@@ -64,14 +64,14 @@ const Register = () => {
         </div>
         <div className="w-full my-5">
           <label
-            className="text-white border-gray-700 text-sm my-1 block"
+            className="dark:text-white border-gray-700 text-sm my-1 block"
             htmlFor="email"
           >
             Password:
           </label>
           <input
             placeholder="Enter your password"
-            className="text-white border-gray-700 bg-inherit w-full border outline-none px-3 py-2 text-sm"
+            className="dark:text-white border-gray-700 bg-inherit w-full border outline-none px-3 py-2 text-sm"
             type="password"
             onChange={handleUserInput}
             name="password"
@@ -80,14 +80,14 @@ const Register = () => {
         </div>
         <div className="w-full my-5">
           <label
-            className="text-white border-gray-700 text-sm my-1 block"
+            className="dark:text-white border-gray-700 text-sm my-1 block"
             htmlFor="email"
           >
             Confirm password:
           </label>
           <input
             placeholder="Confirm your password"
-            className="text-white border-gray-700 bg-inherit w-full border outline-none px-3 py-2 text-sm"
+            className="dark:text-white border-gray-700 bg-inherit w-full border outline-none px-3 py-2 text-sm"
             type="password"
             name="confirmPassword"
             id="password"
@@ -96,7 +96,7 @@ const Register = () => {
         </div>
 
         <div onClick={handlerRegister} className="w-full my-5">
-          <button className="text-white bg-yellow-500 w-full border-none outline-none px-3 py-2 text-sm">
+          <button className="dark:text-white bg-yellow-500 w-full border-none outline-none px-3 py-2 text-sm">
             Sign up
           </button>
         </div>
