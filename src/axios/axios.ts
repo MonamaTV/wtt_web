@@ -1,7 +1,7 @@
 import { Axios } from "axios";
 
 const axios = new Axios({
-  baseURL: `http://127.0.0.1:8000`,
+  baseURL: process.env.API,
 });
 
 axios.interceptors.request.use(
