@@ -28,7 +28,9 @@ const Action = ({
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 border-none rounded-none text-xs bg-yellow-500 text-white">
-        <DropdownMenuCheckboxItem>See details</DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem>
+          <Link to={`/competition/${competitionID}`}>See details</Link>
+        </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem>
           <Link to={`/?competition=${competitionID}`}>Compete</Link>
         </DropdownMenuCheckboxItem>

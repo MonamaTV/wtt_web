@@ -27,9 +27,11 @@ const Modal = ({
           Create new
         </SheetTrigger>
       )}
-      <SheetContent>
+      <SheetContent className="dark:bg-white dark:text-black">
         <SheetHeader>
-          <SheetTitle>{heading}</SheetTitle>
+          <SheetTitle className="text-slate-900 dark:text-slate-900">
+            {heading}
+          </SheetTitle>
           <SheetDescription>{description}</SheetDescription>
         </SheetHeader>
         {children}

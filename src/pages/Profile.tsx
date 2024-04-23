@@ -103,6 +103,8 @@ export const Profile = () => {
     leaveMutation.mutate(competitionID);
   };
 
+  console.log(scores);
+
   if (data === undefined || scores === undefined || competitions == undefined) {
     return <h1>Loading...</h1>;
   }
@@ -127,7 +129,7 @@ export const Profile = () => {
   ];
 
   return (
-    <div className="my-4 dark:text-white">
+    <div className="dark:text-white">
       <div className="border-b border-gray-900 flex flex-row p-10 my-5">
         <div className="flex flex-col gap-y-3 w-full sm:w-2/3">
           <h3 className="text-sm">Profile</h3>
@@ -209,42 +211,6 @@ export const Profile = () => {
               data={competitions}
               headers={competitionHeaders}
             />
-            {/* <table className="my-2 w-full  border-separate border-spacing-y-3 border-spacing-x-0">
-              <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-800 dark:text-gray-100 ">
-                <tr className="border font-normal">
-                  <th>#</th>
-                  <th>Creator</th>
-                  <th>Created at</th>
-                  <th>Expires in</th>
-                  <th>Winner</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody className="w-full text-sm">
-                {
-                  competitions.map((competition: any, index: number) => {
-                    return (
-                        <tr key={competition.id} className="border-b border-cyan-100 border">
-                          <td>{++index}.</td>
-                          <td>{competition.user?.first_name || competition.user?.email.split("@")[0]}</td>
-                          <td>{competition.created_at}</td>
-                          <td>{competition.expires_in}</td>
-                          <td>Terrence</td>
-                          <td>
-                            <Action
-                              mine={userID === competition.creator_id}
-                              competitionID={competition.id}
-                              handleDeleteComp={handleDeleteCompetition}
-                              handleRemove={handleRemoveUserFromCompetition}
-                            />
-                          </td>
-                        </tr>
-                      );
-                  })
-                }
-                
-              </tbody>
-            </table> */}
           </div>
         </div>
       </div>

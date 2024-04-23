@@ -15,10 +15,9 @@ const Leaderboard = () => {
   if (leaderboard === undefined) {
     return <h1>Loading...</h1>;
   }
-
   return (
-    <div className="my-4 dark:text-white">
-      <div className=" border-gray-900 rounded-lg flex flex-col p-10">
+    <div className="dark:text-white min-h-screen">
+      <div className="border-gray-900 rounded-lg flex flex-col p-10">
         <h4 className="flex flex-col justify-center mr-10">Leaderboard</h4>
         <small>The current leaders... (up to date)</small>
       </div>
