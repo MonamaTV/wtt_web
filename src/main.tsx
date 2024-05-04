@@ -12,6 +12,9 @@ import Leaderboard from "./pages/Leaderboard";
 import Home from "./pages/Home";
 import Competition from "./pages/Competition";
 import { ThemeProvider } from "./components/theme-provider";
+import Scores from "./pages/Scores";
+import Competitions from "./pages/Competitions";
+import EditProfile from "./pages/EditProfile";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -44,6 +47,20 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+        children: [
+          {
+            path: "/profile",
+            element: <EditProfile />,
+          },
+          {
+            path: "/profile/scores",
+            element: <Scores />,
+          },
+          {
+            path: "/profile/competitions",
+            element: <Competitions />,
+          },
+        ],
       },
       {
         path: "/leaderboard",

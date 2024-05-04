@@ -15,10 +15,8 @@ interface TableProps {
 }
 
 export function CompetitionTable({ headers, data }: TableProps) {
-  console.log(data);
   return (
     <Table className="my-10">
-      {/* <TableCaption>Current leaders...</TableCaption> */}
       <TableHeader>
         <TableRow className="border-none hover:bg-inherit">
           {headers.map((val, index) => (
@@ -29,12 +27,11 @@ export function CompetitionTable({ headers, data }: TableProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((info: any, index) => (
+        {data.map((info: any) => (
           <TableRow
             className="border-none dark:text-slate-200 text-slate-700 hover:bg-slate-800/10"
             key={info.user.id}
           >
-            {/* <TableCell className="font-medium">{}</TableCell> */}
             <TableCell className="font-medium">
               {info.user.first_name || info.user.email.split("@")[0]}
             </TableCell>

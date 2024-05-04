@@ -19,7 +19,7 @@ export function TableUI({ headers, data }: TableProps) {
   const { decodedToken } = useLogin();
 
   return (
-    <Table>
+    <Table className="text-sm">
       <TableCaption>A list of your recent scores.</TableCaption>
       <TableHeader>
         <TableRow className="border-none hover:bg-inherit">

@@ -29,12 +29,11 @@ export function CompetitionsTableUI({
   const userID = decodedToken()?.user_id;
 
   return (
-    <Table>
-      <TableCaption>A list of your recent competitions.</TableCaption>
+    <Table className="text-sm">
       <TableHeader>
         <TableRow className="border-none hover:bg-inherit">
           {headers.map((val, index) => (
-            <TableHead key={index} className="w-[100px]">
+            <TableHead key={index} className="">
               {val}
             </TableHead>
           ))}
@@ -52,14 +51,14 @@ export function CompetitionsTableUI({
                 ? "Me"
                 : competition?.user.email.split("@")[0]}
             </TableCell>
+            <TableCell className="font-medium">{competition.name}</TableCell>
             <TableCell className="font-medium">
               {timeFormat(competition.created_at)}
             </TableCell>
             <TableCell className="font-medium">
               {timeFormat(competition.expires_in)}
             </TableCell>
-            <TableCell className="font-medium">Tadima</TableCell>
-            <TableCell className="font-medium">
+            <TableCell className="font-medium w-[10px]! px-0!">
               <Action
                 mine={userID === competition.creator_id}
                 competitionID={competition.id}
