@@ -61,6 +61,22 @@ export const getLeaderboard = async () => {
   return JSON.parse(response.data);
 };
 
-// export const getCompetitors =  (competitionID: string) => {
+export const getCompetitionDetails = async (
+  competitionID: string | undefined
+) => {
+  const response = await axios.get(`/competitions/${competitionID}`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+};
 
-// }
+export const getCompetitionInformation = async (
+  competitionID: string | undefined
+) => {
+  const response = await axios.get(`/competitions/info/${competitionID}`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+};

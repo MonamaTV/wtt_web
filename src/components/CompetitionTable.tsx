@@ -14,11 +14,11 @@ interface TableProps {
   data: [];
 }
 
-export function LeaderboardUI({ headers, data }: TableProps) {
+export function CompetitionTable({ headers, data }: TableProps) {
   console.log(data);
   return (
-    <Table>
-      <TableCaption>Current leaders...</TableCaption>
+    <Table className="my-10">
+      {/* <TableCaption>Current leaders...</TableCaption> */}
       <TableHeader>
         <TableRow className="border-none hover:bg-inherit">
           {headers.map((val, index) => (
@@ -34,19 +34,20 @@ export function LeaderboardUI({ headers, data }: TableProps) {
             className="border-none dark:text-slate-200 text-slate-700 hover:bg-slate-800/10"
             key={info.user.id}
           >
-            <TableCell className="font-medium">{++index}</TableCell>
+            {/* <TableCell className="font-medium">{}</TableCell> */}
             <TableCell className="font-medium">
               {info.user.first_name || info.user.email.split("@")[0]}
             </TableCell>
             <TableCell className="font-medium">
-              {Math.floor(info.wpm)}
+              {Math.floor(info.score?.wpm)}
             </TableCell>
             <TableCell className="font-medium">
-              {Math.round(info.accuracy)}%
+              {Math.round(info.score?.accuracy)}%
             </TableCell>
             <TableCell className="font-medium">
-              {timeFormat(info.score.played_at)}
+              {timeFormat(info.score?.played_at || "N/A")}
             </TableCell>
+            <TableCell className="font-medium">No</TableCell>
           </TableRow>
         ))}
       </TableBody>
