@@ -27,17 +27,17 @@ const Action = ({
           <BsThreeDotsVertical />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 border-none rounded-none text-xs bg-yellow-500 text-white">
-        <DropdownMenuCheckboxItem>
+      <DropdownMenuContent className="shadow-sm dark:bg-yellow-500 bg-black  w-40 border-none rounded-none text-xs text-white">
+        <DropdownMenuCheckboxItem className="rounded-none text-xs">
           <Link to={`/competition/${competitionID}`}>See details</Link>
         </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem className="rounded-none text-xs">
           <Link to={`/?competition=${competitionID}`}>Compete</Link>
         </DropdownMenuCheckboxItem>
 
         {mine && (
           <DropdownMenuCheckboxItem
-            className="text-red-500"
+            className="text-red-500 rounded-none text-xs"
             onClick={() => handleDeleteComp(competitionID)}
           >
             Delete
@@ -46,7 +46,7 @@ const Action = ({
         {!mine && (
           <DropdownMenuCheckboxItem
             onClick={() => handleRemove(competitionID)}
-            className="text-red-500"
+            className="text-red-500 rounded-none text-xs"
           >
             Leave
           </DropdownMenuCheckboxItem>

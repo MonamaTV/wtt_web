@@ -1,11 +1,13 @@
 import { CompetitionsTableUI } from "@/components/Competitions";
 import Modal from "@/components/Modal";
 import NewCompetition from "@/components/NewCompetition";
+import SelectScroll from "@/components/Select";
 import {
   deleteCompetition,
   getCompetitions,
   leaveCompetition,
 } from "@/services/game.service";
+import { games } from "@/services/types";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
@@ -62,7 +64,14 @@ const Competitions = () => {
           Competitions that you have created or been invited to.
         </small>
         <div className="flex flex-row gap-x-2 justify-between">
-          <div className="gap-x-2 flex"></div>
+          <div className="gap-x-2 flex w-1/2">
+            <input
+              placeholder="Search..."
+              type="text"
+              className="my-1 text-slate-800 dark:text-white bg-inherit w-full border outline-none dark:border-gray-700 px-3 py-2 text-xs sm:mr-3"
+            />
+            <button>Visualize</button>
+          </div>
           <Modal
             description="You can create a competition amongst your peers. You need to invite them using WTC emails."
             heading="Create competition"
