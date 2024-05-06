@@ -1,13 +1,11 @@
 import { CompetitionsTableUI } from "@/components/Competitions";
 import Modal from "@/components/Modal";
 import NewCompetition from "@/components/NewCompetition";
-import SelectScroll from "@/components/Select";
 import {
   deleteCompetition,
   getCompetitions,
   leaveCompetition,
 } from "@/services/game.service";
-import { games } from "@/services/types";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 

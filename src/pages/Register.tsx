@@ -100,7 +100,7 @@ const Register = () => {
             Sign up
           </button>
         </div>
-        <div className="w-full my-2 text-gray-50 text-xs">
+        <div className="w-full my-2 dark:text-gray-50 text-xs">
           <Link className="underline" to={"/auth/login"}>
             Already have account? Sign in
           </Link>
