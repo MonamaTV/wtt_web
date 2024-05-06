@@ -29,7 +29,9 @@ const Scores = () => {
   return (
     <div className="border-b border-gray-900 flex flex-row px-5 min-h-screen">
       <div className="flex flex-col gap-y-3 w-full">
-        <h3 className="text-sm font-bold">Scores</h3>
+        <small className="text-xs">
+          The list of scores also includes the ones from competitions.
+        </small>
         <div className="flex flex-row gap-x-2 justify-between">
           <div className="gap-x-2 flex">
             <SelectScroll

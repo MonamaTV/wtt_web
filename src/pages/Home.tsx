@@ -72,7 +72,7 @@ const Home = () => {
         toast.error(error.message || "Error entering the competition.");
         setTimeout(() => {
           window.location.href = "/";
-        }, 2000);
+        }, 3000);
       }
     };
 
