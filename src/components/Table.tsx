@@ -1,7 +1,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -20,7 +19,6 @@ export function TableUI({ headers, data }: TableProps) {
 
   return (
     <Table className="text-sm">
-      <TableCaption>A list of your recent scores.</TableCaption>
       <TableHeader>
         <TableRow className="border-none hover:bg-inherit">
           {headers.map((val, index) => (

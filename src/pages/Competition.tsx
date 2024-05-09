@@ -23,9 +23,7 @@ const Competition = () => {
     },
   });
 
-  console.log(competition);
-
-  const headers = ["Competitor", "WPM", "Accuracy", "Played in", "Winner"];
+  const headers = ["", "Competitor", "WPM", "Accuracy", "Words", "Played in"];
 
   if (!competition || !info) return <h1>Loading...</h1>;
 

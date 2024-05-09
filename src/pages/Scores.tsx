@@ -1,5 +1,6 @@
 import SelectScroll from "@/components/Select";
 import { TableUI } from "@/components/Table";
+import PaginationUI from "@/components/Pagination";
 import { getUserScores } from "@/services/game.service";
 import { games, options } from "@/services/types";
 import { useQuery } from "@tanstack/react-query";
@@ -48,6 +49,8 @@ const Scores = () => {
         </div>
         <div className="w-full">
           <TableUI headers={scoreHeaders} data={scores} />
+          {/* <hr /> */}
+          <PaginationUI />
         </div>
       </div>
     </div>

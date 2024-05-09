@@ -7,13 +7,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { timeFormat } from "@/lib/time";
+import { CompetitionData } from "@/lib/types";
 
 interface TableProps {
   headers: string[];
-  data: [];
+  data: CompetitionData[];
 }
 
 export function CompetitionTable({ headers, data }: TableProps) {
+  let newData = data.sort((scoreA, scoreB): any => {
+    const score1 = scoreA.score !== null ? scoreA.score.accuracy : Infinity;
+    const score2 = scoreB.score !== null ? scoreB.score.accuracy : Infinity;
+
+    return score1 > score2 ? 1 : -1;
+  });
+
   return (
     <Table className="my-10">
       <TableHeader>
@@ -26,24 +34,31 @@ export function CompetitionTable({ headers, data }: TableProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((info: any) => (
+        {newData.map((info: CompetitionData, index: number) => (
           <TableRow
             className="border-none dark:text-slate-200 text-slate-700 hover:bg-slate-800/10"
-            key={info.user.id}
+            key={info.user.email}
           >
+            <TableCell className="font-medium">{++index}</TableCell>
             <TableCell className="font-medium">
               {info.user.first_name || info.user.email.split("@")[0]}
             </TableCell>
             <TableCell className="font-medium">
-              {Math.floor(info.score?.wpm)}
+              {info.score?.wpm ? Math.floor(info.score?.wpm) : "N/A"}
             </TableCell>
             <TableCell className="font-medium">
-              {Math.round(info.score?.accuracy)}%
+              {info.score?.accuracy
+                ? Math.floor(info.score?.accuracy) + "%"
+                : "N/A"}
             </TableCell>
             <TableCell className="font-medium">
-              {timeFormat(info.score?.played_at || "N/A")}
+              {info.score?.characters || "N/A"}
             </TableCell>
-            <TableCell className="font-medium">No</TableCell>
+            <TableCell className="font-medium">
+              {info.score?.played_at
+                ? timeFormat(info.score?.played_at)
+                : "N/A"}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

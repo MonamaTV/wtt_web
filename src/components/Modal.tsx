@@ -23,7 +23,7 @@ const Modal = ({
   return (
     <Sheet modal={true} defaultOpen={defaultOpen}>
       {!defaultOpen && (
-        <SheetTrigger className="bg-yellow-500 text-xs px-4 py-2">
+        <SheetTrigger className="bg-yellow-500 text-xs h-8 px-4">
           Create new
         </SheetTrigger>
       )}

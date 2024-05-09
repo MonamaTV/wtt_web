@@ -28,9 +28,9 @@ const Header = () => {
           <li className="hidden sm:list-item">
             <button
               onClick={logout}
-              className="flex items-center justify-center gap-2 border px-1 text-xs py-1"
+              className="flex items-center justify-center gap-2 px-1 text-xs py-1"
             >
-              Sign out
+              {/* Sign out */}
               <IoLogOutSharp />
             </button>
           </li>
