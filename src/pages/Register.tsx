@@ -11,6 +11,8 @@ const Register = () => {
     confirmPassword: "",
   });
 
+  const [isPending, setIsPending] = useState(false);
+
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -23,7 +25,7 @@ const Register = () => {
 
   const handlerRegister = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-
+    setIsPending(true);
     try {
       const response = await registerUser(
         user.email,
@@ -38,6 +40,8 @@ const Register = () => {
       }
     } catch (error: unknown) {
       toast.error("Failed to register. Please try again!");
+    } finally {
+      setIsPending(false);
     }
   };
 
@@ -96,8 +100,11 @@ const Register = () => {
         </div>
 
         <div onClick={handlerRegister} className="w-full my-5">
-          <button className="dark:text-white bg-yellow-500 w-full border-none outline-none px-3 py-2 text-sm">
-            Sign up
+          <button
+            disabled={isPending}
+            className="dark:text-white bg-yellow-500 w-full border-none outline-none px-3 py-2 text-sm disabled:bg-gray-200 disabled:cursor-not-allowed"
+          >
+            {isPending ? "Submitting" : " Sign up"}
           </button>
         </div>
         <div className="w-full my-2 dark:text-gray-50 text-xs">

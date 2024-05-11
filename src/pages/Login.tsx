@@ -5,11 +5,14 @@ import useLogin from "../components/hooks/useAuth";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPending, setIsPending] = useState(false);
   const { login } = useLogin();
 
   const handleLogin = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setIsPending(true);
     login(email, password);
+    setIsPending(false);
   };
 
   return (
@@ -55,10 +58,11 @@ const Login = () => {
         </div>
         <div className="w-full my-5">
           <button
+            disabled={isPending}
             onClick={handleLogin}
-            className="dark:text-white text-sm bg-yellow-500 w-full border-none outline-none px-3 py-2"
+            className="dark:text-white text-sm bg-yellow-500 w-full border-none outline-none px-3 py-2 disabled:bg-gray-200 disabled:cursor-not-allowed"
           >
-            Sign in
+            {isPending ? "Submitting" : "Sign in"}
           </button>
         </div>
         <div className="w-full my-2 dark:text-gray-50 text-xs">
