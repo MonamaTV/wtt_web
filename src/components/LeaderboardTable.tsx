@@ -8,14 +8,18 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { timeFormat } from "@/lib/time";
+import { Leaderboard } from "@/lib/types";
 
 interface TableProps {
   headers: string[];
-  data: [];
+  data: Leaderboard[];
 }
 
 export function LeaderboardUI({ headers, data }: TableProps) {
   console.log(data);
+  let newData = data.sort((leaderA, leaderB): any => {
+    return leaderA.accuracy < leaderB.accuracy ? 1 : -1;
+  });
   return (
     <Table>
       <TableCaption>Current leaders...</TableCaption>
@@ -29,7 +33,7 @@ export function LeaderboardUI({ headers, data }: TableProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((info: any, index) => (
+        {newData.map((info: any, index) => (
           <TableRow
             className="border-none dark:text-slate-200 text-slate-700 hover:bg-slate-800/10"
             key={info.user.id}

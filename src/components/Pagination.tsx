@@ -7,33 +7,35 @@ import {
   PaginationNext,
 } from "@/components/ui/pagination";
 
-const PaginationUI = () => {
+const PaginationUI = ({ pageNumber }: { pageNumber: number }) => {
   return (
     <Pagination className="flex text-xs flex-row items-end justify-start my-4 right-0">
       <PaginationContent className="text-xs flex flex-row items-end">
         <PaginationItem>
-          <PaginationLink
-            className="hover:rounded-none hover:dark:bg-gray-900 text-xs w-7 h-7"
-            href="#"
-          >
-            1
-          </PaginationLink>
+          {pageNumber != 1 && (
+            <PaginationLink
+              className="hover:rounded-none hover:dark:bg-gray-900 text-xs w-7 h-7"
+              href={`/profile/scores?page=${pageNumber - 1}`}
+            >
+              {pageNumber - 1}
+            </PaginationLink>
+          )}
         </PaginationItem>
         <PaginationItem className="text-xs">
           <PaginationLink
             className="dark:bg-yellow-500 rounded-none text-xs w-7 h-7"
-            href="#"
+            href={`/profile/scores?page=${pageNumber}`}
             isActive
           >
-            2
+            {pageNumber}
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationLink
             className="hover:rounded-none hover:dark:bg-gray-900 text-xs w-7 h-7"
-            href="#"
+            href={`/profile/scores?page=${pageNumber + 1}`}
           >
-            3
+            {pageNumber + 1}
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
@@ -42,7 +44,7 @@ const PaginationUI = () => {
         <PaginationItem>
           <PaginationNext
             className="hover:bg-inherit text-xs w-7 h-7"
-            href="#"
+            href={`/profile/scores?page=${pageNumber + 1}`}
           />
         </PaginationItem>
       </PaginationContent>

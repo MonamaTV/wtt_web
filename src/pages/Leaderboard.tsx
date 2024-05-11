@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const Leaderboard = () => {
   const { data: leaderboard } = useQuery({
-    queryKey: ["competitions"],
+    queryKey: ["leaderboard"],
     queryFn: async () => {
       return await getLeaderboard();
     },

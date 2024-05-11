@@ -12,8 +12,14 @@ export const postScore = async (score: Score, competition: string | null) => {
   return JSON.parse(response.data);
 };
 
-export const getUserScores = async (limit: number, orderBy: number) => {
-  const response = await axios.get(`/scores?limit=${limit}&sort=${orderBy}`);
+export const getUserScores = async (
+  limit: number,
+  orderBy: number,
+  pageNumner: number
+) => {
+  const response = await axios.get(
+    `/scores?limit=${limit}&sort=${orderBy}&page=${pageNumner}`
+  );
   return JSON.parse(response.data);
 };
 
