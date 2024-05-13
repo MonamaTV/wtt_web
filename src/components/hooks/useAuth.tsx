@@ -20,7 +20,6 @@ const useLogin = () => {
 
       if (status === 200) {
         setIsLoggedIn(true);
-        toast.success("Login successful!");
         sessionStorage.setItem("token", data.access_token);
         navigate("/");
       } else {
@@ -50,10 +49,10 @@ const useLogin = () => {
   };
 
   const decodedToken = (): {
-    user_id: string
+    user_id: string;
   } => {
-    return jwtDecode(getToken()); 
-  }
+    return jwtDecode(getToken());
+  };
 
   return {
     isLoggedIn,
@@ -63,7 +62,7 @@ const useLogin = () => {
     setIsLoggedIn,
     getToken,
     isTokenExist,
-    decodedToken
+    decodedToken,
   };
 };
 
