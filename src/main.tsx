@@ -15,6 +15,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import Scores from "./pages/Scores";
 import Competitions from "./pages/Competitions";
 import EditProfile from "./pages/EditProfile";
+import Integrations from "./pages/Integrations";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
           {
             path: "/profile/competitions",
             element: <Competitions />,
+          },
+          {
+            path: "/profile/integrations",
+            element: <Integrations />,
           },
         ],
       },

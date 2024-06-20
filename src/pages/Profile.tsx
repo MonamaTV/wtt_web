@@ -4,6 +4,7 @@ import { MdGames } from "react-icons/md";
 import { MdGrade } from "react-icons/md";
 import { MdBuild } from "react-icons/md";
 import { MdApi } from "react-icons/md";
+
 export const Profile = () => {
   return (
     <div className="dark:text-white sm:container my-5 flex flex-row min-h-screen">
@@ -14,7 +15,7 @@ export const Profile = () => {
             end
             className={({ isActive }) =>
               isActive
-                ? "font-semibold text-primary text-white"
+                ? "font-semibold text-primary dark:text-white"
                 : "text-gray-600"
             }
           >
@@ -23,7 +24,7 @@ export const Profile = () => {
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "font-semibold text-primary text-white"
+                ? "font-semibold text-primary dark:text-white"
                 : "text-gray-600"
             }
             to="/profile/competitions"
@@ -34,17 +35,17 @@ export const Profile = () => {
             to="/profile/scores"
             className={({ isActive }) =>
               isActive
-                ? "font-semibold text-primary text-white"
+                ? "font-semibold text-primary dark:text-white"
                 : "text-gray-600"
             }
           >
             Scores
           </NavLink>
           <NavLink
-            to="/"
+            to="/profile/integrations"
             className={({ isActive }) =>
               isActive
-                ? "font-semibold text-primary text-white"
+                ? "font-semibold text-primary dark:text-white"
                 : "text-gray-600"
             }
           >
@@ -54,7 +55,7 @@ export const Profile = () => {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "font-semibold text-primary text-white"
+                ? "font-semibold text-primary dark:text-white"
                 : "text-gray-600"
             }
           >
@@ -100,7 +101,7 @@ export const Profile = () => {
             <span className="text-xs">Integrate</span>
           </NavLink>
           <NavLink
-            to="/"
+            to="/profile/integrations"
             className={({ isActive }) =>
               `font-semibold text-primary flex flex-col items-center ${isActive ? "text-white" : "text-gray-600"}`
             }

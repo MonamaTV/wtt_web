@@ -5,12 +5,17 @@ export const getUser = async () => {
   return JSON.parse(response.data);
 };
 
-export const updateUser = async (name: string, surname: string) => {
+export const updateUser = async (
+  name: string,
+  surname: string,
+  bio: string
+) => {
   const response = await axios.put(
     "/users",
     JSON.stringify({
       first_name: name,
       last_name: surname,
+      bio: bio,
     })
   );
 
@@ -21,9 +26,9 @@ export const updateUser = async (name: string, surname: string) => {
 };
 
 export const checkUserInCompetition = async (competitionID: string | null) => {
-    const response = await axios.get(`/competitions/check/${competitionID}`);
-    if (response.status !== 200) {
-      throw new Error(JSON.parse(response.data).detail);
-    }
-    return JSON.parse(response.data);
-}
+  const response = await axios.get(`/competitions/check/${competitionID}`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+};

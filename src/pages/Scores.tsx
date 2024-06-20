@@ -34,7 +34,6 @@ const Scores = () => {
 
   if (scores === undefined) return <h1>Loading...</h1>;
 
-  console.log(scores);
   return (
     <div className="border-b border-gray-900 flex flex-row px-5 min-h-screen">
       <div className="flex flex-col gap-y-3 w-full">

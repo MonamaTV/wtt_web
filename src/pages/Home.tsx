@@ -117,13 +117,13 @@ const Home = () => {
           onChange={handleInput}
           autoFocus
           spellCheck="false"
-          className={` resize-none text-[1.5rem] absolute w-full  border-none outline-none ${
+          className={` resize-none text-[1.7rem] absolute w-full  border-none outline-none ${
             startTyping
               ? "bg-transparent"
               : "bg-gradient-to-tr opacity-0 from-gray-950/100 to-gray-950 via-gray-950"
           } z-10 text-transparent`}
         ></textarea>
-        <p className="text-[1.5rem] absolute text-gray-300 dark:text-gray-800">
+        <p className="text-[1.7rem] absolute text-gray-300 dark:text-gray-800">
           {[...current].map((character, index) => {
             err = character != text[index] ? err + 1 : err;
             return (
