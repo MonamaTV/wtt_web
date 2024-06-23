@@ -154,9 +154,5 @@ module.exports = {
     },
   ],
 
-  plugins: [
-    require("tailwindcss-animate"),
-    require("@headlessui/tailwindcss"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [require("tailwindcss-animate"), require("@headlessui/tailwindcss")],
 };

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import useLogin from "./hooks/useAuth";
-import { IoLogOutSharp } from "react-icons/io5";
 import { ModeToggle } from "./mode-toggle";
 const Header = () => {
   const { logout, isLoggedIn } = useLogin();
@@ -33,7 +32,7 @@ const Header = () => {
                   className="flex items-center justify-center gap-2 px-1 text-xs py-1"
                 >
                   {/* Sign out */}
-                  <IoLogOutSharp />
+                  Logout
                 </button>
               </li>
             </>
