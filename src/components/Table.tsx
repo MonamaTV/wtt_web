@@ -36,9 +36,9 @@ export function TableUI({ headers, data }: TableProps) {
           >
             <TableCell className="font-medium">{++index}</TableCell>
             <TableCell className="font-medium">
-              {score?.user.id === decodedToken().user_id
+              {score?.user.id === decodedToken()?.user_id
                 ? "Me"
-                : score?.user.email}
+                : score?.user.email.split("@")[0]}
             </TableCell>
             <TableCell className="font-medium">{score.wpm}</TableCell>
             <TableCell className="font-medium">{score.accuracy}%</TableCell>

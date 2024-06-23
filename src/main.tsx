@@ -16,8 +16,8 @@ import Scores from "./pages/Scores";
 import Competitions from "./pages/Competitions";
 import EditProfile from "./pages/EditProfile";
 import Integrations from "./pages/Integrations";
+import User from "./pages/User";
 
-const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/auth",
@@ -34,12 +34,12 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/users/:userID",
+    element: <User />,
+  },
+  {
     path: "/",
-    element: (
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    ),
+    element: <App />,
     children: [
       {
         path: "/",
@@ -79,10 +79,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

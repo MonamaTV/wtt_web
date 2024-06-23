@@ -32,3 +32,19 @@ export const checkUserInCompetition = async (competitionID: string | null) => {
   }
   return JSON.parse(response.data);
 };
+
+export const getUserStats = async (username: string | undefined) => {
+  const response = await axios.get(`/users/stats/${username}`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+};
+
+export const getUserByUsername = async (username: string | undefined) => {
+  const response = await axios.get(`/users/username/${username}`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+};

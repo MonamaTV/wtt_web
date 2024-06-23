@@ -48,9 +48,10 @@ const useLogin = () => {
     return token != null;
   };
 
-  const decodedToken = (): {
-    user_id: string;
-  } => {
+  const decodedToken = (): { user_id: string | null } => {
+    if (!getToken()) {
+      return { user_id: null };
+    }
     return jwtDecode(getToken());
   };
 
