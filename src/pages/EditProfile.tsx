@@ -1,6 +1,7 @@
 import { getUser, updateUser } from "@/services/user.service";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const EditProfile = () => {
@@ -62,7 +63,15 @@ const EditProfile = () => {
     <div className=" border-gray-900 flex flex-row px-5">
       <div className="flex flex-col gap-y-3 w-full sm:w-2/3">
         <h3 className="text-sm">Profile</h3>
-        <small>Logged in as {data.email.split("@")[0]}</small>
+        <small>
+          Logged in as{" "}
+          <Link
+            className="underline text-blue-500"
+            to={`/users/${data.email.split("@")[0]}`}
+          >
+            {data.email.split("@")[0]}
+          </Link>{" "}
+        </small>
         <form className="w-full">
           <div className="flex flex-col sm:flex-col">
             <input

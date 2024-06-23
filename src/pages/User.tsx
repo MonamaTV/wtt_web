@@ -45,7 +45,7 @@ const User = () => {
         <div className="w-3/3 my-3 scroll-m-0 flex flex-col items-center justify-center">
           <div className="text-center w-2/3 sm:w-1/2">
             <h4 className="my-3">
-              {user?.first_name ? user?.first_name : user.email.split("@")[0]}
+              {user?.first_name ? user?.first_name : user?.email.split("@")[0]}
             </h4>
             <small className="text-center">{user?.bio}</small>
           </div>
