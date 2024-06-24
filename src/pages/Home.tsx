@@ -15,7 +15,7 @@ const Home = () => {
   const isMobileView = useMobile();
   const [current, setCurrent] = useState<string>("");
   const [startTyping, setStartTyping] = useState<boolean>();
-  const textRef = useRef<HTMLTextAreaElement>();
+  const textRef = useRef<HTMLTextAreaElement | null>(null);
   const [defaultTimer, setDefaultTimer] = useState(15);
   const [timer, setTimer] = useState<number>(15);
 
@@ -43,7 +43,6 @@ const Home = () => {
     if (textRef.current) {
       textRef.current.focus();
     }
-    //
   };
 
   // Counter
@@ -57,7 +56,8 @@ const Home = () => {
     );
     return () => clearInterval(setTimerInterval);
   }, [timer, startTyping]);
-
+  
+  
   useEffect(() => {
     if (textRef.current) {
       textRef.current.focus();
@@ -93,16 +93,18 @@ const Home = () => {
     setDefaultTimer(value);
     setTimer(value);
     resetGame();
+    if (textRef.current) {
+      textRef.current.focus();
+    }
   };
 
   // Resets the texts, gets new words
   const handleRefreshWords = () => {
     resetGame();
+
     setTimer(defaultTimer);
     if (textRef.current) {
-      textRef.current.focus({
-        preventScroll: false,
-      });
+      textRef.current.focus();
     }
   };
   // Desperate
@@ -115,6 +117,7 @@ const Home = () => {
           rows={5}
           value={current}
           onChange={handleInput}
+          ref={textRef}
           autoFocus
           spellCheck="false"
           className={` resize-none text-[1.7rem] absolute w-full  border-none outline-none ${

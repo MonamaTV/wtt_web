@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { timeFormat } from "@/lib/time";
 import { Leaderboard } from "@/lib/types";
+import { Link } from "react-router-dom";
 
 interface TableProps {
   headers: string[];
@@ -40,7 +41,7 @@ export function LeaderboardUI({ headers, data }: TableProps) {
           >
             <TableCell className="font-medium">{++index}</TableCell>
             <TableCell className="font-medium">
-              {info.user.first_name || info.user.email.split("@")[0]}
+              <Link className="underline" to={`/users/${info.user.email.split("@")[0]}`}>{info.user.first_name || info.user.email.split("@")[0]}</Link>
             </TableCell>
             <TableCell className="font-medium">
               {Math.floor(info.wpm)}

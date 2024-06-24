@@ -28,6 +28,11 @@ const User = () => {
       return await getUserByUsername(userID);
     },
   });
+
+  if (stats === undefined || user === undefined) {
+    return <h1>Loading...</h1>
+  }
+
   const scoreHeaders = [
     "#",
     "Player",
@@ -53,7 +58,7 @@ const User = () => {
           <h3>Analytics</h3>
           <Tap handleChangeTap={handleChangeTap} />
           <div className="sm:w-2/3 w-3/4 shadow-md">
-            {tap == 1 ? (
+            {tap == 2 ? (
               <LineChartHero data={stats} />
             ) : (
               <TableUI headers={scoreHeaders} data={stats} />
