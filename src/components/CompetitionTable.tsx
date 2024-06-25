@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/table";
 import { timeFormat } from "@/lib/time";
 import { CompetitionData } from "@/lib/types";
+import { Link } from "react-router-dom";
 
 interface TableProps {
   headers: string[];
@@ -41,7 +42,12 @@ export function CompetitionTable({ headers, data }: TableProps) {
           >
             <TableCell className="font-medium">{++index}</TableCell>
             <TableCell className="font-medium">
-              {info.user.first_name || info.user.email.split("@")[0]}
+              <Link
+                className="underline"
+                to={`/users/${info.user.email.split("@")[0]}`}
+              >
+                {info.user.first_name || info.user.email.split("@")[0]}
+              </Link>
             </TableCell>
             <TableCell className="font-medium">
               {info.score?.wpm ? Math.floor(info.score?.wpm) : "N/A"}
