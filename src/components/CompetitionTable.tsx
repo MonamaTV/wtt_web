@@ -34,6 +34,7 @@ export function CompetitionTable({ headers, data }: TableProps) {
           ))}
         </TableRow>
       </TableHeader>
+      // 
       <TableBody>
         {newData.map((info: CompetitionData, index: number) => (
           <TableRow
