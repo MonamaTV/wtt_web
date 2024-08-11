@@ -48,3 +48,16 @@ export const getUserByUsername = async (username: string | undefined) => {
   }
   return JSON.parse(response.data);
 };
+
+export const verifyUser = async (token: string) => {
+  const response = await axios.post(
+    `/users/verify`,
+    JSON.stringify({
+      token,
+    })
+  );
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return response;
+};

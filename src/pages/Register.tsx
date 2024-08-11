@@ -34,7 +34,7 @@ const Register = () => {
       );
       const data = JSON.parse(response.data);
       if (response.status == 200) {
-        navigate("/auth/login");
+        toast.success("Check your emails to verify your account!");
       } else {
         toast.error(data.detail);
       }

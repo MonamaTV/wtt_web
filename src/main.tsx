@@ -17,6 +17,7 @@ import Competitions from "./pages/Competitions";
 import EditProfile from "./pages/EditProfile";
 import Integrations from "./pages/Integrations";
 import User from "./pages/User";
+import VerifyUser from "./pages/VerifyUser";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/auth/register",
         element: <Register />,
+      },
+      {
+        path: "/auth/verify/:token",
+        element: <VerifyUser />,
       },
     ],
   },
