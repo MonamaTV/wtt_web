@@ -4,7 +4,6 @@ import { registerUser } from "../services/auth.service";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",

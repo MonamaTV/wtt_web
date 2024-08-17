@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const VerifyUser = () => {
   const { token } = useParams();
-  const { isLoading, verify } = useLogin();
+  const { verify } = useLogin();
   useEffect(() => {
     const getVerifiedUser = async () => {
       try {
