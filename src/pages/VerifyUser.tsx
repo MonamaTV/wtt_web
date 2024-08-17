@@ -33,7 +33,7 @@ const VerifyUser = () => {
       </h3>
       <h1 className="text-2xl">Loading...</h1>
       <h5 className="text-xs">
-        You will be redirected to login page once your email is verified...
+        You will be redirected to dashboard page once your email is verified...
       </h5>
     </div>
   );

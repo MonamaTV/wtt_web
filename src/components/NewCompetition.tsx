@@ -5,8 +5,6 @@ import React, { useState } from "react";
 import { IoPersonAdd } from "react-icons/io5";
 import { toast } from "react-toastify";
 const NewCompetition = () => {
-  const [invites, setInvites] = useState([""]);
-
   const [email, setEmail] = useState("");
 
   const [competition, setCompetition] = useState({
@@ -22,7 +20,19 @@ const NewCompetition = () => {
       };
     });
     setEmail("");
-    setInvites([...invites, ""]);
+  };
+
+  const handleRemovePeer = (invite: string) => {
+    setCompetition((prevCompetion) => {
+      const newCompetition = prevCompetion.competitors.filter(
+        (val) => val !== invite
+      );
+      return {
+        ...competition,
+        competitors: [...newCompetition],
+      };
+    });
+    setEmail("");
   };
 
   const handlePeerEmailInput = (event: React.FormEvent<HTMLInputElement>) => {
@@ -47,7 +57,6 @@ const NewCompetition = () => {
       setCompetition((_) => {
         return { name: "", competitors: Array() };
       });
-      setInvites([""]);
     },
     onError: (error) => {
       toast.error(error.message);
@@ -59,6 +68,8 @@ const NewCompetition = () => {
 
     mutation.mutate(competition);
   };
+
+  console.log(competition);
 
   return (
     <>
@@ -80,30 +91,42 @@ const NewCompetition = () => {
             <label htmlFor="name" className="text-xs">
               Invites*
             </label>
-            {invites.map((_, index: number) => (
-              <input
-                key={index}
-                className="border outline-none text-xs px-3 py-2 mb-2"
-                placeholder="Enter peer's email"
-                type="email"
-                onChange={handlePeerEmailInput}
-              />
-            ))}
+            <input
+              className="border outline-none text-xs px-3 py-2 mb-2"
+              placeholder="Enter peer's email"
+              type="email"
+              value={email}
+              onChange={handlePeerEmailInput}
+            />
           </div>
-          <div className="flex flex-col gap-y- my-2">
+          <div className="flex flex-col my-2">
             <span
               onClick={handleInvitesInput}
-              className="border w-7 h-7 flex justify-center items-center p-1"
+              className="border cursor-pointer w-20 flex flex-row justify-center items-center p-1"
             >
-              <IoPersonAdd />
+              <IoPersonAdd /> <p className="text-xs">Add</p>
             </span>
+          </div>
+          <div className="flex flex-col my-2">
+            <span className="text-xs my-1 text-gray-500">
+              *Touch names to remove
+            </span>
+            {competition.competitors.map((invite, index) => (
+              <p
+                key={index}
+                className="flex flex-row justify-items-start text-sm"
+                onClick={() => handleRemovePeer(invite)}
+              >
+                - {invite.split("@")[0]}
+              </p>
+            ))}
           </div>
           <div className="flex flex-col gap-y-2 my-2">
             <button
               onClick={addCompetition}
               className="border bg-black text-yellow-500   outline-none text-xs px-3 py-2"
             >
-              {mutation.isPending ? "Creating" : "Create"}
+              {mutation.isPending ? "Creating" : "Submit Competition"}
             </button>
           </div>
         </form>

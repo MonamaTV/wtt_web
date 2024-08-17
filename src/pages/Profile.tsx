@@ -4,8 +4,16 @@ import { MdGames } from "react-icons/md";
 import { MdGrade } from "react-icons/md";
 import { MdBuild } from "react-icons/md";
 import { MdApi } from "react-icons/md";
+import useLogin from "@/components/hooks/useAuth";
 
 export const Profile = () => {
+  const { decodedToken } = useLogin();
+
+  const email = decodedToken()?.email;
+  if (email === null) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <div className="dark:text-white sm:container my-5 flex flex-row min-h-screen">
       <div className="w-0 sm:w-1/5">
@@ -20,6 +28,16 @@ export const Profile = () => {
             }
           >
             Profile
+          </NavLink>
+          <NavLink
+            to={`/users/${email.split("@")[0]}`}
+            className={({ isActive }) =>
+              isActive
+                ? "font-semibold text-primary dark:text-white"
+                : "text-gray-600"
+            }
+          >
+            Analytics
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -67,7 +85,9 @@ export const Profile = () => {
             to="/profile"
             end
             className={({ isActive }) =>
-              `font-semibold text-primary flex flex-col items-center ${isActive ? "text-white" : "text-gray-600"}`
+              `font-semibold text-primary flex flex-col items-center ${
+                isActive ? "text-white" : "text-gray-600"
+              }`
             }
           >
             <MdManageAccounts />
@@ -75,7 +95,9 @@ export const Profile = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              `font-semibold text-primary flex flex-col items-center ${isActive ? "text-white" : "text-gray-600"}`
+              `font-semibold text-primary flex flex-col items-center ${
+                isActive ? "text-white" : "text-gray-600"
+              }`
             }
             to="/profile/competitions"
           >
@@ -85,7 +107,9 @@ export const Profile = () => {
           <NavLink
             to="/profile/scores"
             className={({ isActive }) =>
-              `font-semibold text-primary flex flex-col items-center ${isActive ? "text-white" : "text-gray-600"}`
+              `font-semibold text-primary flex flex-col items-center ${
+                isActive ? "text-white" : "text-gray-600"
+              }`
             }
           >
             <MdGrade />
@@ -94,7 +118,9 @@ export const Profile = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `font-semibold text-primary flex flex-col items-center ${isActive ? "text-white" : "text-gray-600"}`
+              `font-semibold text-primary flex flex-col items-center ${
+                isActive ? "text-white" : "text-gray-600"
+              }`
             }
           >
             <MdApi />
@@ -103,7 +129,9 @@ export const Profile = () => {
           <NavLink
             to="/profile/integrations"
             className={({ isActive }) =>
-              `font-semibold text-primary flex flex-col items-center ${isActive ? "text-white" : "text-gray-600"}`
+              `font-semibold text-primary flex flex-col items-center ${
+                isActive ? "text-white" : "text-gray-600"
+              }`
             }
           >
             <MdBuild />

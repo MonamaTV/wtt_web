@@ -46,7 +46,9 @@ const useLogin = () => {
       if (status === 200) {
         setIsLoggedIn(true);
         sessionStorage.setItem("token", data.access_token);
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 4000);
       } else {
         toast.error(data.detail);
         sessionStorage.removeItem("token");
@@ -74,9 +76,9 @@ const useLogin = () => {
     return token != null;
   };
 
-  const decodedToken = (): { user_id: string | null } => {
+  const decodedToken = (): { user_id: string | null; email: string | null } => {
     if (!getToken()) {
-      return { user_id: null };
+      return { user_id: null, email: null };
     }
     return jwtDecode(getToken());
   };

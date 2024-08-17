@@ -79,7 +79,7 @@ const EditProfile = () => {
               className="my-1 text-slate-800 dark:text-white bg-inherit w-full border outline-none dark:border-gray-700 px-3 py-2 text-xs sm:mr-3"
               type="text"
               name="name"
-              value={user.name || data.first_name}
+              value={user.name}
               id="name"
               onChange={handleUserInput}
             />
@@ -89,14 +89,14 @@ const EditProfile = () => {
               type="text"
               name="surname"
               id="surname"
-              value={user.surname || data.last_name}
+              value={user.surname}
               onChange={handleUserInput}
             />
             <textarea
               id="bio"
               name="bio"
-              placeholder="Enter your bio"
-              value={user.bio || data.bio}
+              placeholder={data.bio || "Enter your bio"}
+              value={user.bio}
               onChange={handleUserInput}
               className="my-1 text-slate-800 dark:text-white bg-inherit w-full border outline-none dark:border-gray-700 px-3 py-2 text-xs sm:mr-3 resize-none"
               rows={10}
