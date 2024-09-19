@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { IoPersonAdd } from "react-icons/io5";
 import { toast } from "react-toastify";
+
 const NewCompetition = () => {
   const [email, setEmail] = useState("");
   const [competition, setCompetition] = useState({

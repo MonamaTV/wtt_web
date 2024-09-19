@@ -22,6 +22,7 @@ const User = () => {
       return await getUserStats(userID);
     },
   });
+
   const { data: user } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -55,7 +56,7 @@ const User = () => {
             <small className="text-center">{user?.bio}</small>
           </div>
           <br />
-          
+
           <h5>Analytics <small className="text-xs">(last 10 games)</small> </h5>
           <br />
           <Tap handleChangeTap={handleChangeTap} />

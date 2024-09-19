@@ -18,6 +18,7 @@ import EditProfile from "./pages/EditProfile";
 import Integrations from "./pages/Integrations";
 import User from "./pages/User";
 import VerifyUser from "./pages/VerifyUser";
+import Competitors from "./pages/Competitors";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "/competition/:id",
         element: <Competition />,
+      },
+      {
+        path: "/competition/:id/competitors",
+        element: <Competitors />,
       },
     ],
   },

@@ -68,7 +68,6 @@ const Competitions = () => {
               type="text"
               className="my-1 text-slate-800 dark:text-white bg-inherit w-full border outline-none dark:border-gray-700 px-3 py-2 text-xs sm:mr-3"
             />
-            {/* <button>Visualize</button> */}
           </div>
           <Modal
             description="You can create a competition amongst your peers. You need to invite them using WTC emails."

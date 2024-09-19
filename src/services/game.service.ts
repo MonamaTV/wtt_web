@@ -86,3 +86,14 @@ export const getCompetitionInformation = async (
   }
   return JSON.parse(response.data);
 };
+
+
+export const getCompetitorList = async (
+  competitionID: string | undefined
+) => {
+  const response = await axios.get(`/competitions/${competitionID}/competitors`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+};

@@ -31,7 +31,6 @@ const Header = () => {
                   onClick={logout}
                   className="flex items-center justify-center gap-2 px-1 text-xs py-1"
                 >
-                  {/* Sign out */}
                   Logout
                 </button>
               </li>
