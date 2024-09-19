@@ -16,6 +16,10 @@ const Competitors = () => {
 
   const headers = ["#", "First name", "Last name", "Username", "Bio"];
 
+  if (!competitorList) {
+    return <h1>Loading...</h1>
+  }
+
   return (
     <div className="dark:text-white min-h-screen">
       <div className="border-gray-900 rounded-lg flex flex-col p-10">

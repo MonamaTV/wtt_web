@@ -6,7 +6,7 @@ export const postScore = async (score: Score, competition: string | null) => {
   const response = await axios.post(url, JSON.stringify(score));
 
   if (response.status !== 200) {
-    throw new Error(JSON.parse(response.data).detail);
+    window.location.href = "/";
   }
 
   return JSON.parse(response.data);

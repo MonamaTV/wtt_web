@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { timeFormat } from "@/lib/time";
 import { Competitors } from "@/lib/types";
 import { Link } from "react-router-dom";
 
@@ -20,7 +19,6 @@ interface TableProps {
 
 const CompetitorList = ({ headers, data: newData}: TableProps) => {
 
-  console.log(newData)
   return (
     <Table>
       <TableCaption>Competitors</TableCaption>
