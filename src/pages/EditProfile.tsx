@@ -37,8 +37,6 @@ const EditProfile = () => {
     const name = event.currentTarget.name;
     const value = event.currentTarget.value;
 
-    console.log(value, name);
-
     setUser({
       ...user,
       [name]: value,

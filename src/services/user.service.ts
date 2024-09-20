@@ -5,6 +5,9 @@ export const getUser = async () => {
   return JSON.parse(response.data);
 };
 
+
+
+
 export const updateUser = async (
   name: string,
   surname: string,

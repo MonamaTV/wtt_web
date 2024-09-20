@@ -27,7 +27,6 @@ const Competition = () => {
 
   if (!competition || !info) return <h1>Loading...</h1>;
 
-  console.log(competition)
 
   return (
     <div className="my-4 container h-screen">

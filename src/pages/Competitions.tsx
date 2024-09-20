@@ -57,7 +57,6 @@ const Competitions = () => {
   return (
     <div className="border-b border-gray-900 flex flex-row px-5 min-h-screen">
       <div className="flex flex-col gap-y-3 w-full">
-        {/* <h3 className="text-sm">Competitions</h3> */}
         <small className="text-xs">
           Competitions that you have created or been invited to.
         </small>
