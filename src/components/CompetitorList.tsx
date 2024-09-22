@@ -10,15 +10,12 @@ import {
 import { Competitors } from "@/lib/types";
 import { Link } from "react-router-dom";
 
-
-
 interface TableProps {
   headers: string[];
   data: Competitors[];
 }
 
-const CompetitorList = ({ headers, data: newData}: TableProps) => {
-
+const CompetitorList = ({ headers, data: newData }: TableProps) => {
   return (
     <Table>
       <TableCaption>Competitors</TableCaption>
@@ -39,23 +36,38 @@ const CompetitorList = ({ headers, data: newData}: TableProps) => {
           >
             <TableCell className="font-medium">{++index}</TableCell>
             <TableCell className="font-medium">
-              <Link className="underline" to={`/users/${info.email.split("@")[0]}`}>{info.first_name || "N/A"}</Link>
+              <Link
+                className="underline"
+                to={`/users/${info.email.split("@")[0]}`}
+              >
+                {info.first_name || "N/A"}
+              </Link>
             </TableCell>
             <TableCell className="font-medium">
-              <Link className="underline" to={`/users/${info.email.split("@")[0]}`}>{info.last_name || "N/A"}</Link>
+              <Link
+                className="underline"
+                to={`/users/${info.email.split("@")[0]}`}
+              >
+                {info.last_name || "N/A"}
+              </Link>
             </TableCell>
 
             <TableCell className="font-medium">
-              {info.email.split("@")[0] || "N/A"}
+              <Link
+                className="underline"
+                to={`/users/${info.email.split("@")[0]}`}
+              >
+                {info.email.split("@")[0] || "N/A"}
+              </Link>
             </TableCell>
             <TableCell className="font-medium">
-              {info.bio ? info.bio.splice(0, 20) + "..." : "N/A"}
+              {info.bio !== null ? info.bio.slice(0, 20) + "..." : "N/A"}
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
     </Table>
   );
-}
+};
 
 export default CompetitorList;
