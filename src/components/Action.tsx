@@ -29,7 +29,10 @@ const Action = ({
       </DropdownMenuTrigger>
       <DropdownMenuContent className="shadow-sm dark:bg-yellow-500 bg-black  w-40 border-none rounded-none text-xs text-white">
         <DropdownMenuCheckboxItem className="rounded-none text-xs">
-          <Link to={`/competition/${competitionID}`}>See details</Link>
+          <Link to={`/competition/${competitionID}/competitors`}>Competitors</Link>
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem className="rounded-none text-xs">
+          <Link to={`/competition/${competitionID}`}>Check scores</Link>
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem className="rounded-none text-xs">
           <Link to={`/?competition=${competitionID}`}>Compete</Link>

@@ -4,10 +4,12 @@ import {
   getCompetitionInformation,
 } from "@/services/game.service";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { IoArrowBack } from "react-icons/io5";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Competition = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data: competition } = useQuery({
     queryKey: ["competition"],
@@ -31,7 +33,14 @@ const Competition = () => {
     <div className="my-4 container h-screen">
       <div className="flex flex-row my-5 gap-3 justify-center">
         <div className="w-2/3 scroll-m-0">
-          <div className="text-center">
+          <button
+            className="text-xs bg-yellow-500 w-9 text-center px-3 py-1"
+            onClick={() => navigate(-1)}
+          >
+            <IoArrowBack />
+          </button>
+          <br />
+          <div className="my-2">
             <h3>Competition: {info?.name}</h3>
             <small className="text-center">
               By {info?.user.email.split("@")[0]}

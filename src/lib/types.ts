@@ -54,3 +54,11 @@ export interface Score {
   characters: number;
   user: User;
 }
+
+
+export interface Competitors {
+  first_name: string | null;
+  last_name: string | null;
+  bio: string | null;
+  email: string | null;
+}

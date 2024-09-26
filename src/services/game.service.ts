@@ -6,7 +6,7 @@ export const postScore = async (score: Score, competition: string | null) => {
   const response = await axios.post(url, JSON.stringify(score));
 
   if (response.status !== 200) {
-    throw new Error(JSON.parse(response.data).detail);
+    window.location.href = "/";
   }
 
   return JSON.parse(response.data);
@@ -81,6 +81,17 @@ export const getCompetitionInformation = async (
   competitionID: string | undefined
 ) => {
   const response = await axios.get(`/competitions/info/${competitionID}`);
+  if (response.status !== 200) {
+    throw new Error(JSON.parse(response.data).detail);
+  }
+  return JSON.parse(response.data);
+};
+
+
+export const getCompetitorList = async (
+  competitionID: string | undefined
+) => {
+  const response = await axios.get(`/competitions/${competitionID}/competitors`);
   if (response.status !== 200) {
     throw new Error(JSON.parse(response.data).detail);
   }

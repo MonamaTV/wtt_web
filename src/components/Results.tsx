@@ -11,7 +11,7 @@ interface ResultsProps {
     completed: boolean;
     errors: number;
   };
-  competition: string | null
+  competition: string | null;
 }
 
 const Results = ({ score, competition }: ResultsProps) => {
@@ -25,16 +25,18 @@ const Results = ({ score, competition }: ResultsProps) => {
   const { isError, error } = useQuery({
     queryKey: ["scores", score],
     queryFn: async () => {
-      return await postScore({
-        completed: score.completed,
-        duration: score.duration,
-        characters: score.typed.length,
-        words: score.test.length,
-        errors: score.errors,
-      }, competition);
+      return await postScore(
+        {
+          completed: score.completed,
+          duration: score.duration,
+          characters: score.typed.length,
+          words: score.test.length,
+          errors: score.errors,
+        },
+        competition
+      );
     },
   });
-
 
   if (isError) {
     toast.error(error.message);

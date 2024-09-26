@@ -4,11 +4,12 @@ import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { IoPersonAdd } from "react-icons/io5";
 import { toast } from "react-toastify";
+
 const NewCompetition = () => {
   const [email, setEmail] = useState("");
-
   const [competition, setCompetition] = useState({
     name: "",
+    rounds: 0,
     competitors: Array(),
   });
 
@@ -39,6 +40,18 @@ const NewCompetition = () => {
     setEmail(event.currentTarget.value);
   };
 
+  const handleRoundsInput = (event: React.FormEvent<HTMLInputElement>) => {
+    //
+    try {
+      const number = parseInt(event.currentTarget.value);
+      setCompetition((prevCompetion) => {
+        return { ...prevCompetion, rounds: number };
+      });
+    } catch (error) {
+      // toast.error("Rounds must be a number.")
+    }
+  };
+
   const handleCompetitionNameInput = (
     event: React.FormEvent<HTMLInputElement>
   ) => {
@@ -55,7 +68,7 @@ const NewCompetition = () => {
     onSuccess: () => {
       toast.success("Successfully created a competition.");
       setCompetition((_) => {
-        return { name: "", competitors: Array() };
+        return { name: "", competitors: Array(), rounds: 0 };
       });
     },
     onError: (error) => {
@@ -69,15 +82,13 @@ const NewCompetition = () => {
     mutation.mutate(competition);
   };
 
-  console.log(competition);
-
   return (
     <>
       <div className="text-gray-900 bg-white">
         <form className="my-5">
           <div className="flex flex-col gap-y-1 my-2">
             <label htmlFor="name" className="text-xs">
-              Name*
+              Name<span className="text-red-400">*</span>
             </label>
             <input
               className="border outline-none text-xs px-3 py-2"
@@ -87,9 +98,21 @@ const NewCompetition = () => {
               onChange={handleCompetitionNameInput}
             />
           </div>
+          <div className="flex flex-col gap-y-1 my-2">
+            <label htmlFor="name" className="text-xs">
+              Rounds<span className="text-red-400">*</span>
+            </label>
+            <input
+              className="border outline-none text-xs px-3 py-2"
+              placeholder="No. of times each student plays"
+              type="number"
+              value={competition.rounds}
+              onChange={handleRoundsInput}
+            />
+          </div>
           <div className="flex flex-col gap-y- my-2">
             <label htmlFor="name" className="text-xs">
-              Invites*
+              Invites<span className="text-red-400">*</span>
             </label>
             <input
               className="border outline-none text-xs px-3 py-2 mb-2"

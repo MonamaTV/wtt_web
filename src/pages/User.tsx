@@ -22,6 +22,7 @@ const User = () => {
       return await getUserStats(userID);
     },
   });
+
   const { data: user } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -30,7 +31,7 @@ const User = () => {
   });
 
   if (stats === undefined || user === undefined) {
-    return <h1>Loading...</h1>
+    return <h1>Loading...</h1>;
   }
 
   const scoreHeaders = [
@@ -46,20 +47,21 @@ const User = () => {
   return (
     <div className="dark:bg-[#09090b] min-h-[100vh]">
       <Header />
-      <div className="sm:container mx-auto dark:text-white">
-        <div className="w-3/3 my-3 scroll-m-0 flex flex-col items-center justify-center">
-          <div className="text-center w-2/3 sm:w-1/2 mb-3">
-            <h3 className="my-2 text-lg">
+      <div className="w-3/4 sm:w-2/3 flex justify-center  mx-auto dark:text-white">
+        <div className="w-full my-3 scroll-m-0 flex flex-col -center justify-center">
+          <div className="w-3/3 sm:w-1/2">
+            <h3 className=" text-lg">
               {user?.first_name ? user?.first_name : user?.email.split("@")[0]}
             </h3>
-            <small className="text-center">{user?.bio}</small>
+            {/* <small className="text-center">{user?.bio}</small> */}
           </div>
-          <br />
-          
-          <h5>Analytics <small className="text-xs">(last 10 games)</small> </h5>
+
+          <h5 className="text-sm">
+            Analytics <small className="text-xs">(last 10 games)</small>{" "}
+          </h5>
           <br />
           <Tap handleChangeTap={handleChangeTap} />
-          <div className="sm:w-2/3 w-3/4">
+          <div className="sm:w-3/3 w-4/4">
             {tap == 2 ? (
               <LineChartHero data={stats} />
             ) : (

@@ -8,6 +8,7 @@ export interface Score {
 
 export interface Competition {
   name: string;
+  rounds: number;
   competitors: string[];
 }
 
