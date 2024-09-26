@@ -1,7 +1,7 @@
 import CompetitorList from "@/components/CompetitorList";
 import { getCompetitorList } from "@/services/game.service";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 
 const Competitors = () => {
