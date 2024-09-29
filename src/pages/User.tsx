@@ -53,9 +53,7 @@ const User = () => {
             <h3 className=" text-lg">
               {user?.first_name ? user?.first_name : user?.email.split("@")[0]}
             </h3>
-            {/* <small className="text-center">{user?.bio}</small> */}
           </div>
-
           <h5 className="text-sm">
             Analytics <small className="text-xs">(last 10 games)</small>{" "}
           </h5>
