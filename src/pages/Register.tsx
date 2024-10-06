@@ -57,7 +57,7 @@ const Register = () => {
             Email:
           </label>
           <input
-            placeholder="E.g tad023@student.wethinkcode.co.za"
+            placeholder="E.g tad023@gmail.co.za"
             className="dark:text-white bg-inherit w-full border outline-none px-3 border-gray-700 py-2 text-sm"
             type="text"
             name="email"

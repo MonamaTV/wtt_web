@@ -27,7 +27,7 @@ const Login = () => {
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="E.g tadima@student.wethinkcode.co.za"
+            placeholder="E.g tadima@student.co.za"
             className="dark:text-white bg-inherit w-full border outline-none px-3 py-2 border-gray-700 text-sm"
             type="text"
             name="email"
