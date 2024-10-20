@@ -33,7 +33,10 @@ const Register = () => {
       );
       const data = JSON.parse(response.data);
       if (response.status == 200) {
-        toast.success("Check your emails to verify your account!");
+        toast.success("Succesfully created your account...");
+        setTimeout(() => {
+          window.location.href = "/auth/login";
+        }, 1000);
       } else {
         toast.error(data.detail);
       }

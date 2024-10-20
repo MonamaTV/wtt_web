@@ -55,7 +55,9 @@ const EditProfile = () => {
     },
   });
 
-  if (data === undefined) return <h1>Loading...</h1>;
+  if (data === undefined || data === null) return <h1>Loading...</h1>;
+
+  console.log(data);
 
   return (
     <div className=" border-gray-900 flex flex-row px-5">
