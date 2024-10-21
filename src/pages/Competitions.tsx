@@ -69,7 +69,7 @@ const Competitions = () => {
             />
           </div>
           <Modal
-            description="You can create a competition amongst your peers. You need to invite them using WTC emails."
+            description="You can create a competition amongst your peers. You need to invite them using their registered emails."
             heading="Create competition"
           >
             <NewCompetition />

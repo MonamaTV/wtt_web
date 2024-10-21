@@ -2,14 +2,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import { MdManageAccounts } from "react-icons/md";
 import { MdGames } from "react-icons/md";
 import { MdGrade } from "react-icons/md";
-import { MdBuild } from "react-icons/md";
-import { MdApi } from "react-icons/md";
 import useLogin from "@/components/hooks/useAuth";
 
 export const Profile = () => {
   const { decodedToken } = useLogin();
 
   const email = decodedToken()?.email;
+  const userId = decodedToken()?.user_id;
   if (email === null) {
     return <h1>Loading...</h1>;
   }
@@ -30,16 +29,6 @@ export const Profile = () => {
             Profile
           </NavLink>
           <NavLink
-            to={`/users/${email.split("@")[0]}`}
-            className={({ isActive }) =>
-              isActive
-                ? "font-semibold text-primary dark:text-white"
-                : "text-gray-600"
-            }
-          >
-            Analytics
-          </NavLink>
-          <NavLink
             className={({ isActive }) =>
               isActive
                 ? "font-semibold text-primary dark:text-white"
@@ -58,6 +47,16 @@ export const Profile = () => {
             }
           >
             Scores
+          </NavLink>
+          <NavLink
+            to={`/users/${userId}`}
+            className={({ isActive }) =>
+              isActive
+                ? "font-semibold text-primary dark:text-white"
+                : "text-gray-600"
+            }
+          >
+            Analytics
           </NavLink>
           <NavLink
             to="/profile/integrations"
