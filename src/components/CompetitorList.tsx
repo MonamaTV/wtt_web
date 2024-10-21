@@ -38,7 +38,7 @@ const CompetitorList = ({ headers, data: newData }: TableProps) => {
             <TableCell className="font-medium">
               <Link
                 className="underline"
-                to={`/users/${info.email.split("@")[0]}`}
+                to={`/users/${info.id}`}
               >
                 {info.first_name || "N/A"}
               </Link>
@@ -46,7 +46,7 @@ const CompetitorList = ({ headers, data: newData }: TableProps) => {
             <TableCell className="font-medium">
               <Link
                 className="underline"
-                to={`/users/${info.email.split("@")[0]}`}
+                to={`/users/${info.id}`}
               >
                 {info.last_name || "N/A"}
               </Link>
@@ -55,7 +55,7 @@ const CompetitorList = ({ headers, data: newData }: TableProps) => {
             <TableCell className="font-medium">
               <Link
                 className="underline"
-                to={`/users/${info.email.split("@")[0]}`}
+                to={`/users/${info.id}`}
               >
                 {info.email.split("@")[0] || "N/A"}
               </Link>

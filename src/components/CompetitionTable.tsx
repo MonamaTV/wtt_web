@@ -44,7 +44,7 @@ export function CompetitionTable({ headers, data }: TableProps) {
             <TableCell className="font-medium">
               <Link
                 className="underline"
-                to={`/users/${info.user.email.split("@")[0]}`}
+                to={`/users/${info.user.id}`}
               >
                 {info.user.first_name || info.user.email.split("@")[0]}
               </Link>

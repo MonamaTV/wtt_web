@@ -40,7 +40,7 @@ export function LeaderboardUI({ headers, data }: TableProps) {
           >
             <TableCell className="font-medium">{++index}</TableCell>
             <TableCell className="font-medium">
-              <Link className="underline" to={`/users/${info.user.email.split("@")[0]}`}>{info.user.first_name || info.user.email.split("@")[0]}</Link>
+              <Link className="underline" to={`/users/${info.user.id}`}>{info.user.first_name || info.user.email.split("@")[0]}</Link>
             </TableCell>
             <TableCell className="font-medium">
               {Math.floor(info.wpm)}

@@ -67,7 +67,7 @@ const EditProfile = () => {
           Logged in as{" "}
           <Link
             className="underline text-blue-500"
-            to={`/users/${data.email.split("@")[0]}`}
+            to={`/users/${data.id}`}
           >
             {data.email.split("@")[0]}
           </Link>{" "}

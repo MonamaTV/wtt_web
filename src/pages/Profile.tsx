@@ -115,7 +115,7 @@ export const Profile = () => {
             <MdGrade />
             <span className="text-xs">Scores</span>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/"
             className={({ isActive }) =>
               `font-semibold text-primary flex flex-col items-center ${
@@ -136,7 +136,7 @@ export const Profile = () => {
           >
             <MdBuild />
             <span className="text-xs">Settings</span>
-          </NavLink>
+          </NavLink> */}
         </nav>
       </div>
       <div className="w-full sm:w-4/5 sm:border-l sm:border-gray-900">
